@@ -39,6 +39,8 @@
       padding: 0;
     }
 
+    html { scrollbar-gutter: stable both-edges; }
+
     html, body {
       background-color: var(--canvas);
       color: var(--text);
@@ -104,7 +106,7 @@
 
     .logo-version {
       font-family: var(--font-mono);
-      font-size: 0.72rem;
+      font-size: 0.82rem;
       color: var(--signal);
       background: var(--signal-surface);
       border: 1px solid var(--signal-border);
@@ -119,7 +121,7 @@
     }
 
     .nav-link {
-      font-size: 0.85rem;
+      font-size: 1rem;
       font-weight: 600;
       color: var(--text-muted);
       padding: 8px 14px;
@@ -141,7 +143,7 @@
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      font-size: 0.85rem;
+      font-size: 1rem;
       font-weight: 600;
       min-height: 44px;
       transition: transform 0.15s ease, opacity 0.15s ease;
@@ -150,6 +152,40 @@
     .btn-github:hover {
       transform: translateY(-1px);
       opacity: 0.95;
+    }
+
+    .mobile-toggle {
+      display: none;
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 8px 12px;
+      min-height: 44px;
+      min-width: 44px;
+      align-items: center;
+      justify-content: center;
+      border-radius: var(--radius);
+      cursor: pointer;
+    }
+
+    @media (max-width: 860px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        position: absolute;
+        top: 64px;
+        left: 0;
+        right: 0;
+        background: var(--canvas);
+        border-bottom: 1px solid var(--border-subtle);
+        padding: 12px 24px 16px;
+        gap: 4px;
+      }
+      .nav-links.open { display: flex; }
+      .nav-link { padding: 12px 14px; }
+      .btn-github { justify-content: center; margin-top: 6px; }
+      .mobile-toggle { display: inline-flex; }
     }
 
     /* Hero Section (Fulfills 1280x800 golden rule: Headline <= 7 words, one sentence, action visible without scroll) */
@@ -163,7 +199,7 @@
       display: inline-flex;
       align-items: center;
       font-family: var(--font-mono);
-      font-size: 0.75rem;
+      font-size: 0.82rem;
       color: var(--text-muted);
       margin-bottom: 16px;
       gap: 8px;
@@ -203,18 +239,28 @@
     .install-bar {
       display: inline-flex;
       align-items: center;
+      flex-wrap: wrap;
+      justify-content: center;
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius);
       padding: 6px 6px 6px 18px;
       margin-bottom: 16px;
+      max-width: 100%;
     }
 
     .install-command {
       font-family: var(--font-mono);
-      font-size: 0.9rem;
+      font-size: 1rem;
       color: var(--text);
       user-select: all;
+      overflow-wrap: anywhere;
+      padding: 6px 0;
+    }
+
+    @media (max-width: 480px) {
+      .install-bar { width: 100%; padding: 10px; }
+      .btn-install-copy { margin-left: 0; width: 100%; justify-content: center; }
     }
 
     .install-command .token-sig {
@@ -233,7 +279,7 @@
       color: var(--text);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      font-size: 0.8rem;
+      font-size: 0.82rem;
       font-weight: 600;
       min-height: 44px;
       transition: transform 0.1s ease, opacity 0.1s ease;
@@ -255,7 +301,7 @@
 
     .section-eyebrow {
       font-family: var(--font-mono);
-      font-size: 0.75rem;
+      font-size: 0.82rem;
       color: var(--text-muted);
       margin-bottom: 8px;
       text-transform: lowercase;
@@ -270,8 +316,8 @@
 
     .section-desc {
       color: var(--text-muted);
-      font-size: 0.95rem;
-      max-width: 620px;
+      font-size: 1rem;
+      max-width: 60ch;
       margin-bottom: 36px;
     }
 
@@ -289,6 +335,7 @@
 
     /* Left Workbench: Direct Input & Controls */
     .controls-pane {
+      min-width: 0;
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius);
@@ -299,7 +346,7 @@
     }
 
     .pane-label {
-      font-size: 0.8rem;
+      font-size: 0.82rem;
       font-family: var(--font-mono);
       color: var(--text-muted);
     }
@@ -311,7 +358,7 @@
       border: 1px solid var(--border);
       border-radius: var(--radius);
       color: var(--text);
-      font-size: 0.95rem;
+      font-size: 1rem;
       font-family: inherit;
       outline: none;
       transition: opacity 0.15s ease;
@@ -333,7 +380,7 @@
       border: 1px solid var(--border);
       border-radius: var(--radius);
       color: var(--text-muted);
-      font-size: 0.8rem;
+      font-size: 0.82rem;
       font-weight: 600;
       min-height: 44px;
       display: inline-flex;
@@ -382,7 +429,7 @@
     }
 
     .monitor-sub {
-      font-size: 0.85rem;
+      font-size: 1rem;
       color: var(--text-muted);
       margin-bottom: 16px;
     }
@@ -392,13 +439,14 @@
       align-items: center;
       padding: 8px 16px;
       border-radius: var(--radius);
-      font-size: 0.8rem;
+      font-size: 0.82rem;
       font-weight: 700;
       min-height: 44px;
     }
 
     /* Right Workbench: Token Stream & Generated Brief */
     .output-pane {
+      min-width: 0;
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius);
@@ -412,19 +460,22 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
       border-bottom: 1px solid var(--border-subtle);
       padding-bottom: 14px;
     }
 
     .harness-selector {
       display: flex;
+      flex-wrap: wrap;
       gap: 6px;
     }
 
     .harness-tab {
       padding: 6px 12px;
       border-radius: var(--radius);
-      font-size: 0.78rem;
+      font-size: 0.82rem;
       color: var(--text-muted);
       border: 1px solid transparent;
       min-height: 44px;
@@ -460,7 +511,7 @@
 
     .showcase-matrix {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
       gap: 20px;
       margin-top: 32px;
     }
@@ -483,7 +534,7 @@
 
     .cell-number {
       font-family: var(--font-mono);
-      font-size: 0.72rem;
+      font-size: 0.82rem;
       color: var(--signal);
       margin-bottom: 10px;
     }
@@ -496,8 +547,8 @@
     }
 
     .showcase-cell p {
-      font-size: 0.88rem;
-      color: var(--text-muted);
+      font-size: 1rem;
+      color: var(--text);
       line-height: 1.6;
       margin-bottom: 20px;
     }
@@ -506,7 +557,7 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      font-size: 0.85rem;
+      font-size: 1rem;
       font-weight: 700;
       color: var(--text);
       min-height: 44px;
@@ -546,7 +597,7 @@
 
     .pane-tag-bad {
       font-family: var(--font-mono);
-      font-size: 0.75rem;
+      font-size: 0.82rem;
       font-weight: 700;
       color: #F87171;
       margin-bottom: 16px;
@@ -555,7 +606,7 @@
 
     .pane-tag-good {
       font-family: var(--font-mono);
-      font-size: 0.75rem;
+      font-size: 0.82rem;
       font-weight: 700;
       color: #34D399;
       margin-bottom: 16px;
@@ -567,7 +618,7 @@
       display: flex;
       flex-direction: column;
       gap: 14px;
-      font-size: 0.9rem;
+      font-size: 1rem;
     }
 
     .rule-list li {
@@ -585,7 +636,7 @@
 
     .harness-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr));
       gap: 16px;
       margin-top: 32px;
     }
@@ -596,12 +647,12 @@
       border-radius: var(--radius);
       padding: 20px;
       font-weight: 700;
-      font-size: 0.95rem;
+      font-size: 1rem;
     }
 
     .harness-item span {
       display: block;
-      font-size: 0.75rem;
+      font-size: 0.82rem;
       font-family: var(--font-mono);
       color: var(--text-muted);
       font-weight: 400;
@@ -618,9 +669,20 @@
 
     .footer-commands {
       font-family: var(--font-mono);
-      font-size: 0.8rem;
+      font-size: 0.82rem;
       margin-top: 12px;
-      color: var(--text-faint);
+      color: var(--text-muted);
+    }
+
+    /* Archetype thumbnails inside showcase cells */
+    .cell-thumb {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      display: block;
+      border-radius: 6px;
+      border: 1px solid var(--border-subtle);
+      margin-bottom: 16px;
     }
 
     /* Toast Notification */
@@ -633,7 +695,7 @@
       border: 1px solid var(--border);
       padding: 12px 20px;
       border-radius: var(--radius);
-      font-size: 0.85rem;
+      font-size: 1rem;
       font-weight: 600;
       opacity: 0;
       transform: translateY(8px);
@@ -647,8 +709,17 @@
       transform: translateY(0);
     }
 
+    @media (max-width: 480px) {
+      .toast-box { left: 16px; right: 16px; text-align: center; }
+    }
+
+    /* Motion: staggered entrance reveals — transform + opacity only */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.in { opacity: 1; transform: none; }
+
     /* Rule 7: prefers-reduced-motion fallback */
     @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
       *, ::before, ::after {
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
@@ -666,7 +737,7 @@
         <span>CraftSpec</span>
         <span class="logo-version">v1.0.0</span>
       </div>
-      <nav class="nav-links">
+      <nav class="nav-links" id="navLinks">
         <a href="#workbench" class="nav-link">Workbench</a>
         <a href="#gallery" class="nav-link">Showcases</a>
         <a href="#floor" class="nav-link">The Floor</a>
@@ -678,6 +749,9 @@
           GitHub
         </a>
       </nav>
+      <button class="mobile-toggle" onclick="toggleMenu()" aria-label="Toggle navigation">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      </button>
     </div>
   </header>
 
@@ -688,9 +762,9 @@
         <span>the floor defense</span>
         <code>@makeskills/craftspec</code>
       </div>
-      <h1 class="hero-headline">Eliminate AI slop. Construct real systems.</h1>
+      <h1 class="hero-headline">Eliminate AI slop.</h1>
       <p class="hero-sentence">
-        CraftSpec binds generative coding assistants to strict architectural invariants, replacing default AI templates with declared tokens and signature moments.
+        CraftSpec constructs real systems — binding generative assistants to strict architectural invariants, declared tokens, and signature moments.
       </p>
 
       <!-- Primary Action: Install Command Bar -->
@@ -785,6 +859,7 @@
         <!-- 01 Swiss Editorial -->
         <div class="showcase-cell">
           <div>
+            <img class="cell-thumb" src="assets/watch-movement.jpg" alt="Navy enamel and gilt dial of a Cabrier watch movement" loading="lazy" decoding="async">
             <div class="cell-number">01 / swiss editorial</div>
             <h3>Aura Chronometry</h3>
             <p>High-contrast typographic platform. Calibre 4100 escapement configurator, 12-column grid, crimson signal.</p>
@@ -798,6 +873,7 @@
         <!-- 02 Tactical Dark Tech -->
         <div class="showcase-cell">
           <div>
+            <img class="cell-thumb" src="assets/balticservers-data-center.jpg" alt="Server racks lit by blue status LEDs in a data centre" loading="lazy" decoding="async">
             <div class="cell-number">02 / tactical dark</div>
             <h3>Krypton Telemetry</h3>
             <p>OLED charcoal base (#0B0D0F). Interactive live kernel stream, monospace data density, zero AI glow.</p>
@@ -811,6 +887,7 @@
         <!-- 03 Quiet Luxury -->
         <div class="showcase-cell">
           <div>
+            <img class="cell-thumb" src="assets/palace-or-villa-interior-colonnaded-hall.jpg" alt="Pen and wash drawing of a colonnaded palace hall" loading="lazy" decoding="async">
             <div class="cell-number">03 / quiet luxury</div>
             <h3>Maison Verre</h3>
             <p>Warm cream foundation (#FDFBF7), Cormorant serif majesty, tactile spatial palette selector, amber accent.</p>
@@ -824,6 +901,7 @@
         <!-- 04 Industrial Brutalist -->
         <div class="showcase-cell">
           <div>
+            <img class="cell-thumb" src="assets/hydraulic-press-1.jpg" alt="Green hydraulic press standing on a factory yard" loading="lazy" decoding="async">
             <div class="cell-number">04 / industrial brutalist</div>
             <h3>Forge Dynamics</h3>
             <p>Rigid 2px solid black architectural framing, mechanical Space Mono, tactile hydraulic load simulator.</p>
@@ -837,6 +915,7 @@
         <!-- 05 Cyber Blueprint -->
         <div class="showcase-cell">
           <div>
+            <img class="cell-thumb" src="assets/fujikura-optic-fiber-at-science-museum.jpg" alt="Optical fibre strands fanned across black splice trays" loading="lazy" decoding="async">
             <div class="cell-number">05 / cyber blueprint</div>
             <h3>Axiom Blueprint</h3>
             <p>Midnight cyber navy (#080E18), interactive SVG node topology, cyan status feedback for deep tech systems.</p>
@@ -850,6 +929,7 @@
         <!-- 06 Wabi-Sabi Paper -->
         <div class="showcase-cell">
           <div>
+            <img class="cell-thumb" src="assets/washi-sugihara-paper.jpg" alt="Fanned sheets of Sugihara washi paper in dyed and undyed fibres" loading="lazy" decoding="async">
             <div class="cell-number">06 / wabi-sabi paper</div>
             <h3>Kami Atelier</h3>
             <p>Warm rice-paper canvas (#F4EFEA), Shippori Mincho serif, vertical Japanese annotation, handcrafted restraint.</p>
@@ -1125,6 +1205,17 @@ Design and implement an agency-grade interface for "${q}" strictly adhering to C
     }
 
     renderWorkbench();
+
+    function toggleMenu() {
+      document.getElementById('navLinks').classList.toggle('open');
+    }
+
+    /* Staggered entrance reveals — opacity + transform only */
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.section-eyebrow, .section-title, .section-desc, .controls-pane, .output-pane, .showcase-cell, .floor-pane, .harness-item')
+      .forEach((el, i) => { el.classList.add('reveal'); el.style.transitionDelay = (i % 4) * 70 + 'ms'; io.observe(el); });
   </script>
 </body>
 </html>
