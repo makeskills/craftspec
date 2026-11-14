@@ -1,0 +1,6 @@
+# CraftSpec Cursor Rules
+- Strictly follow "The Floor" design rules: No transition: all, no animating width/height/top/left.
+- No purple-to-blue gradients, no cards inside cards, no emoji icons.
+- Never invent metrics, testimonials, or fake logos.
+- Mobile touch targets must be at least 44x44px.
+- Use tokens for colors and fonts. Every interactive element must have :focus-visible.

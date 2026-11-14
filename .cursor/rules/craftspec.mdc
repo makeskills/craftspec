@@ -1,0 +1,23 @@
+---
+description: CraftSpec UI/UX 設計系統與硬性防線規範
+globs: **/*.{tsx,jsx,vue,svelte,html,css,scss}
+---
+
+# CraftSpec Design Rules for Cursor
+
+當在此專案中編寫前端、UI 元件或樣式時，請嚴格遵守以下「The Floor」硬性底線：
+
+1. **嚴禁動畫濫用**：
+   - 禁止 `transition: all`。
+   - 動畫與過渡僅限 `transform` 與 `opacity`。
+2. **抗 AI 模板化（Strict Anti-Slop）**：
+   - 嚴禁紫色到藍色漸變背景 (`from-purple-500 to-indigo-500`)。
+   - 嚴禁卡片裡面包同色卡片（Cards inside cards）。
+   - 嚴禁用 Emoji 作為圖標，一律使用 Lucide / Phosphor SVG。
+   - 嚴禁捏造虛假數據或客戶滿意度百分比。
+3. **行動端與觸控防禦**：
+   - 所有按鈕、輸入框最小點擊熱區為 `44x44px` (`min-h-[44px] min-w-[44px]`)。
+   - 標題使用響應式字級或 `clamp()`，避免手機端多行折行。
+   - 絕不在手機端產生橫向滾動溢出。
+4. **色彩與排版 Tokens**：
+   - 所有顏色與字體變數使用 `:root` 或 Tailwind 設定，不得在元件內寫死隨機 Hex 值。

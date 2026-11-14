@@ -1,0 +1,6 @@
+# CraftSpec Windsurf Rules
+- Strictly follow "The Floor" design rules: No transition: all, only animate transform and opacity.
+- Anti-slop: No purple-to-blue gradients, no cards inside cards, no emoji icons.
+- No invented numbers, metrics, or fake testimonials.
+- Mobile touch targets must be at least 44x44px.
+- Use tokens for colors and fonts. Every interactive element must have :focus-visible.

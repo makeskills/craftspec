@@ -1,0 +1,18 @@
+{
+  "name": "craftspec",
+  "version": "1.0.0",
+  "description": "頂級 AI 設計需求架構師與規格最佳化引擎：以 Ask Once 精準提問、The Floor 硬性底線防禦、行動端防爆與風格抽卡盲盒，將模糊需求重構為極致專業、抗模板化的 AI 設計規格與提示詞。",
+  "author": {
+    "name": "craftspec team"
+  },
+  "keywords": [
+    "design",
+    "craftspec",
+    "ui-ux",
+    "anti-slop",
+    "the-floor",
+    "design-tokens",
+    "prompt-optimizer"
+  ],
+  "skills": "skills"
+}
