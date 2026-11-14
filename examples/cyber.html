@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Axiom Blueprint — Cybernetic Architecture & Deep-Tech Systems</title>
+  <meta name="description" content="High-dimensional cybernetic architecture and deep-tech runtime systems. Built with CraftSpec Cyber Blueprint invariants.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    /* Hallmark Stamp: craftspec-cyber-blueprint-landing | Full Landing Page | The Floor Compliant */
+    :root {
+      --bg: #080E18;
+      --surface: #0E1726;
+      --surface-elevated: #152238;
+      --border: #1E293B;
+      --border-accent: #0E7490;
+      --text: #F1F5F9;
+      --text-muted: #94A3B8;
+      --text-faint: #475569;
+      --accent: #06B6D4;
+      --accent-glow: rgba(6, 182, 212, 0.15);
+      --font-display: 'Chakra Petch', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --radius: 6px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-mono);
+      overflow-x: clip;
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.5;
+    }
+
+    :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+    .container { max-width: 1240px; margin: 0 auto; padding: 0 24px; }
+
+    /* Nav */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(8, 14, 24, 0.94);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+      height: 68px;
+      display: flex;
+      align-items: center;
+    }
+    .nav-inner { display: flex; justify-content: space-between; align-items: center; width: 100%; }
+    .brand { font-family: var(--font-display); font-weight: 700; font-size: 1.15rem; color: #FFF; text-decoration: none; letter-spacing: 0.05em; display: flex; align-items: center; gap: 10px; }
+    .badge-cyber { font-size: 0.7rem; font-family: var(--font-mono); background: rgba(6, 182, 212, 0.15); color: var(--accent); border: 1px solid var(--border-accent); padding: 3px 8px; border-radius: 4px; }
+
+    .nav-links { display: flex; align-items: center; gap: 8px; }
+    .nav-link { font-size: 0.85rem; color: var(--text-muted); text-decoration: none; padding: 10px 14px; min-height: 44px; display: inline-flex; align-items: center; border-radius: var(--radius); }
+    .nav-link:hover { color: #FFF; }
+
+    .btn-cyber {
+      background: var(--accent);
+      color: #04252D;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.85rem;
+      padding: 10px 18px;
+      border-radius: var(--radius);
+      text-decoration: none;
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      transition: opacity 0.15s ease, transform 0.15s ease;
+    }
+    .btn-cyber:hover { opacity: 0.92; transform: translateY(-1px); }
+
+    .mobile-toggle { display: none; background: none; border: 1px solid var(--border); padding: 8px 12px; border-radius: var(--radius); min-height: 44px; min-width: 44px; align-items: center; justify-content: center; color: var(--text); cursor: pointer; }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 68px;
+        left: 0;
+        right: 0;
+        background: var(--bg);
+        border-bottom: 1px solid var(--border);
+        padding: 20px 24px;
+        gap: 12px;
+      }
+      .mobile-toggle { display: flex; }
+    }
+
+    /* Hero Section (Fulfills 1280x800 golden rule: Headline, one sentence, action visible without scroll) */
+    .hero {
+      padding: clamp(50px, 8vw, 84px) 0 64px;
+      border-bottom: 1px solid var(--border);
+    }
+    .hero-pre { font-size: 0.75rem; color: var(--accent); letter-spacing: 0.12em; margin-bottom: 16px; }
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 6vw, 4.4rem);
+      font-weight: 700;
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+      margin-bottom: 24px;
+      max-width: 920px;
+    }
+    .hero-title span { color: var(--accent); }
+    .hero-desc {
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      color: var(--text-muted);
+      max-width: 680px;
+      margin-bottom: 36px;
+      line-height: 1.6;
+    }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; }
+    .btn-outline {
+      background: var(--surface);
+      color: var(--text);
+      border: 1px solid var(--border);
+      padding: 10px 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      border-radius: var(--radius);
+      text-decoration: none;
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      transition: background 0.15s ease;
+    }
+    .btn-outline:hover { background: var(--surface-elevated); }
+
+    /* Section 02: Signature Moment (Interactive Topology Router) */
+    .section { padding: clamp(60px, 8vw, 100px) 0; border-bottom: 1px solid var(--border); }
+    .section-eyebrow { font-size: 0.75rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 8px; }
+    .section-title { font-family: var(--font-display); font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 700; letter-spacing: -0.02em; margin-bottom: 40px; }
+
+    .router-grid {
+      display: grid;
+      grid-template-columns: 8fr 4fr;
+      gap: 24px;
+    }
+    @media (max-width: 860px) {
+      .router-grid { grid-template-columns: 1fr; }
+    }
+
+    .matrix-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+    }
+    .matrix-head { display: flex; justify-content: space-between; border-bottom: 1px solid var(--border); padding-bottom: 12px; margin-bottom: 16px; font-size: 0.8rem; color: var(--text-muted); }
+    .matrix-feed { background: #040810; border: 1px solid var(--border); border-radius: 6px; padding: 20px; font-size: 0.82rem; line-height: 1.8; }
+    .matrix-row { display: flex; gap: 12px; }
+    .matrix-node { color: var(--accent); }
+
+    .control-col {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .cluster-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+    }
+    .cluster-label { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; margin-bottom: 6px; }
+    .cluster-val { font-size: 1.8rem; font-weight: 700; color: #FFF; font-family: var(--font-display); }
+    .cluster-sub { font-size: 0.75rem; color: var(--accent); margin-top: 4px; }
+
+    /* Bento Grid */
+    .bento-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 24px;
+    }
+    .b-8 { grid-column: span 8; }
+    .b-4 { grid-column: span 4; }
+    .b-6 { grid-column: span 6; }
+    @media (max-width: 860px) {
+      .b-8, .b-4, .b-6 { grid-column: span 12; }
+    }
+
+    .bento-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px;
+    }
+    .bento-num { font-size: 0.75rem; color: var(--accent); margin-bottom: 12px; }
+    .bento-card h3 { font-family: var(--font-display); font-size: 1.35rem; font-weight: 700; margin-bottom: 12px; }
+    .bento-card p { font-size: 0.92rem; color: var(--text-muted); line-height: 1.6; }
+
+    /* Topologies Table */
+    .topo-wrap {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow-x: auto;
+    }
+    .topo-table { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.88rem; min-width: 600px; }
+    .topo-table th, .topo-table td { padding: 18px 24px; border-bottom: 1px solid var(--border); }
+    .topo-table th { font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted); background: var(--surface-elevated); }
+    .topo-table td code { background: #040810; padding: 4px 8px; border-radius: 4px; color: var(--accent); }
+    .topo-table tr:last-child td { border-bottom: none; }
+
+    /* Banner */
+    .cta-banner {
+      background: var(--surface-elevated);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: clamp(40px, 6vw, 64px) clamp(24px, 5vw, 48px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 32px;
+    }
+    .cta-heading { font-family: var(--font-display); font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 700; max-width: 600px; line-height: 1.15; }
+
+    footer { padding: 64px 0 40px; color: var(--text-muted); font-size: 0.82rem; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; margin-bottom: 48px; }
+    @media (max-width: 768px) { .footer-grid { grid-template-columns: 1fr; } }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 8px; margin-top: 12px; }
+    .footer-links a { color: var(--text-muted); text-decoration: none; min-height: 44px; display: inline-flex; align-items: center; }
+    .footer-links a:hover { color: #FFF; }
+  </style>
+</head>
+<body>
+
+  <!-- Nav -->
+  <header class="nav">
+    <div class="container nav-inner">
+      <a href="../index.html" class="brand">
+        <span>AXIOM</span>
+        <span class="badge-cyber">// BLUEPRINT</span>
+      </a>
+      <nav class="nav-links" id="navMenu">
+        <a href="#topology" class="nav-link">Topologies</a>
+        <a href="#architecture" class="nav-link">Architecture</a>
+        <a href="#clusters" class="nav-link">Clusters</a>
+        <a href="../index.html" class="nav-link">Hub</a>
+        <a href="#deploy" class="btn-cyber">DEPLOY KERNEL</a>
+      </nav>
+      <button class="mobile-toggle" onclick="toggleMenu()" aria-label="Toggle navigation">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- 01 Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-pre">SYSTEM TOPOLOGY // CLUSTER 2026</div>
+        <h1 class="hero-title">Architectural Depth. <span>Engineered Signal.</span></h1>
+        <p class="hero-desc">
+          High-dimensional blueprint aesthetics for deep-tech, AI research labs, and next-generation cloud infrastructure.
+        </p>
+        <div class="hero-actions">
+          <a href="#topology" class="btn-cyber">ACTIVATE ROUTING MATRIX</a>
+          <a href="../index.html" class="btn-outline">RETURN TO CRAFTSPEC HUB</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 02 Signature Moment: Interactive Neural Router -->
+    <section class="section" id="topology">
+      <div class="container">
+        <div class="section-eyebrow">Signature Artifact // Grid Telemetry</div>
+        <h2 class="section-title">Geometric Routing Topology</h2>
+
+        <div class="router-grid">
+          <div class="matrix-box">
+            <div class="matrix-head">
+              <span>AXIOM CORE // ROUTE_04</span>
+              <span style="color:var(--accent);">● SYNC ACTIVE</span>
+            </div>
+            <div class="matrix-feed">
+              <div class="matrix-row"><span>05:58:01</span><span class="matrix-node">[SYNAPSE]</span> Route verified through 4px/8px modular units</div>
+              <div class="matrix-row"><span>05:58:02</span><span class="matrix-node">[FLOOR_OK]</span> No layout drift. Universal transform/opacity motion</div>
+              <div class="matrix-row"><span>05:58:03</span><span class="matrix-node">[FLOOR_OK]</span> Cyan feedback active: #06B6D4. Zero purple glow</div>
+              <div class="matrix-row"><span>05:58:04</span><span class="matrix-node">[FLOOR_OK]</span> Touch bounding boxes verified &gt;= 44px across viewport</div>
+              <div class="matrix-row"><span>05:58:05</span><span class="matrix-node">[DEPLOY]</span> Ready for high-assurance deep-tech interfaces</div>
+            </div>
+          </div>
+
+          <div class="control-col">
+            <div class="cluster-card">
+              <div class="cluster-label">Routing Frequency</div>
+              <div class="cluster-val">4.2 GHz</div>
+              <div class="cluster-sub">Optical Interconnect</div>
+            </div>
+            <div class="cluster-card">
+              <div class="cluster-label">Floor Defense Score</div>
+              <div class="cluster-val" style="color:var(--accent);">100%</div>
+              <div class="cluster-sub">Zero Floor Violations</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03 Architecture Bento Grid -->
+    <section class="section" id="architecture">
+      <div class="container">
+        <div class="section-eyebrow">Architectural Tenets</div>
+        <h2 class="section-title">Cybernetic Invariants</h2>
+
+        <div class="bento-grid">
+          <div class="bento-card b-8">
+            <div class="bento-num">SPEC 01 // GEOMETRIC PRECISION</div>
+            <h3>MODULAR BLUEPRINT GRIDS</h3>
+            <p>
+              Interfaces are constructed on rigorous structural blueprints. Zero float, zero uncontrolled margins, and absolute visual rhythm.
+            </p>
+          </div>
+          <div class="bento-card b-4">
+            <div class="bento-num">SPEC 02 // ZERO SLOP</div>
+            <h3>CYAN TELEMETRY</h3>
+            <p>
+              High-contrast cyan signals (#06B6D4) provide razor-sharp status feedback without relying on purple gradient tropes.
+            </p>
+          </div>
+          <div class="bento-card b-6">
+            <div class="bento-num">SPEC 03 // OLED MIDNIGHT</div>
+            <h3>ZERO EYE STRAIN</h3>
+            <p>
+              OLED midnight canvas (#080E18) delivers glare-free immersion for mission-critical command centers.
+            </p>
+          </div>
+          <div class="bento-card b-6">
+            <div class="bento-num">SPEC 04 // MOBILE INTEGRITY</div>
+            <h3>44PX TOUCH ANCHORS</h3>
+            <p>
+              Touch targets scale fluidly with clamp() typography, preventing horizontal viewport drift on smaller displays.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04 Topologies Table -->
+    <section class="section" id="clusters">
+      <div class="container">
+        <div class="section-eyebrow">Cluster Architecture</div>
+        <h2 class="section-title">Verified Mesh Topologies</h2>
+
+        <div class="topo-wrap">
+          <table class="topo-table">
+            <thead>
+              <tr><th>CLUSTER NODE</th><th>TOPOLOGY</th><th>INTERCONNECT</th><th>STATUS</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><code>AXIOM-NODE-01</code></td><td>Mesh Hypercube</td><td>100 Gbps RoCE</td><td><strong style="color:var(--accent);">OPERATIONAL</strong></td></tr>
+              <tr><td><code>AXIOM-NODE-02</code></td><td>Torus Grid</td><td>200 Gbps Infiniband</td><td><strong style="color:var(--accent);">OPERATIONAL</strong></td></tr>
+              <tr><td><code>AXIOM-NODE-03</code></td><td>Ring Star</td><td>400 Gbps Optical</td><td><strong>SYNCHRONIZING</strong></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05 Call to Action -->
+    <section class="section" id="deploy">
+      <div class="container">
+        <div class="cta-banner">
+          <div>
+            <h2 class="cta-heading">CONSTRUCT DEEP TECH WITH CRAFTSPEC.</h2>
+            <p style="color:var(--text-muted); margin-top:8px;">Operational across Devin, Cursor, Claude Code, Windsurf, and Copilot.</p>
+          </div>
+          <div style="display:flex; gap:16px; flex-wrap:wrap;">
+            <a href="../index.html" class="btn-cyber">EXPLORE HUB PLAYGROUND</a>
+            <a href="https://github.com/makeskills/craftspec" target="_blank" class="btn-outline">VIEW GITHUB</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div style="font-family:var(--font-display); font-weight:700; color:#FFF; margin-bottom:12px;">AXIOM // CRAFTSPEC</div>
+          <p style="line-height:1.6;">Cyber Blueprint Archetype Reference Landing Page. Powered by <code>@makeskills/craftspec</code>.</p>
+        </div>
+        <div>
+          <div style="font-weight:700; color:#FFF; margin-bottom:12px;">THEME SHOWCASES</div>
+          <ul class="footer-links">
+            <li><a href="swiss.html">Swiss Editorial</a></li>
+            <li><a href="dark-tech.html">Tactical Dark Tech</a></li>
+            <li><a href="luxury.html">Quiet Luxury</a></li>
+            <li><a href="brutalist.html">Industrial Brutalist</a></li>
+          </ul>
+        </div>
+        <div>
+          <div style="font-weight:700; color:#FFF; margin-bottom:12px;">INSTALLATION</div>
+          <ul class="footer-links">
+            <li><span>npm i @makeskills/craftspec</span></li>
+            <li><span>npx @makeskills/craftspec init</span></li>
+          </ul>
+        </div>
+      </div>
+      <div style="border-top:1px solid var(--border); padding-top:24px; text-align:center;">
+        CraftSpec Cyber Blueprint Edition · Fully Responsive · MIT License
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('navMenu').classList.toggle('open');
+    }
+  </script>
+</body>
+</html>

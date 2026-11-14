@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maison Verre — Quiet Luxury Architectural Design</title>
+  <meta name="description" content="Architectural living and bespoke interior spaces. Built with CraftSpec Quiet Luxury invariants.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Hallmark Stamp: craftspec-quiet-luxury-landing | Full Landing Page | The Floor Compliant */
+    :root {
+      --bg: #FDFBF7;
+      --surface: #FFFFFF;
+      --surface-subtle: #F7F4EE;
+      --text: #1C1917;
+      --text-muted: #78716C;
+      --text-faint: #A8A29E;
+      --border: #E7E5E4;
+      --border-strong: #D6D3D1;
+      --accent: #B45309;
+      --font-serif: 'Cormorant Garamond', Georgia, serif;
+      --font-sans: 'Plus Jakarta Sans', -apple-system, sans-serif;
+      --radius: 6px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-sans);
+      overflow-x: clip;
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.6;
+    }
+
+    :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+    /* Top Navigation */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(253, 251, 247, 0.94);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+      height: 72px;
+      display: flex;
+      align-items: center;
+    }
+    .nav-inner { display: flex; justify-content: space-between; align-items: center; width: 100%; }
+    .brand { font-family: var(--font-serif); font-size: 1.7rem; font-weight: 700; color: var(--text); text-decoration: none; letter-spacing: -0.01em; }
+    .nav-links { display: flex; align-items: center; gap: 8px; }
+    .nav-link { font-size: 0.9rem; color: var(--text-muted); text-decoration: none; padding: 10px 16px; min-height: 44px; display: inline-flex; align-items: center; border-radius: var(--radius); }
+    .nav-link:hover { color: var(--text); }
+    .btn-luxury {
+      background: var(--text);
+      color: #FFF;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 10px 22px;
+      border-radius: var(--radius);
+      text-decoration: none;
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      transition: background 0.15s ease, transform 0.15s ease;
+    }
+    .btn-luxury:hover { background: #292524; transform: translateY(-1px); }
+
+    .mobile-toggle { display: none; background: none; border: 1px solid var(--border); padding: 8px 12px; border-radius: var(--radius); min-height: 44px; min-width: 44px; align-items: center; justify-content: center; color: var(--text); cursor: pointer; }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 72px;
+        left: 0;
+        right: 0;
+        background: var(--bg);
+        border-bottom: 1px solid var(--border);
+        padding: 20px 24px;
+        gap: 12px;
+      }
+      .mobile-toggle { display: flex; }
+    }
+
+    /* Hero */
+    .hero {
+      padding: clamp(64px, 10vw, 108px) 0 80px;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+    }
+    .hero-eyebrow { font-size: 0.85rem; font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 20px; }
+    .hero-title {
+      font-family: var(--font-serif);
+      font-size: clamp(3rem, 7vw, 5.4rem);
+      font-weight: 500;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      max-width: 950px;
+      margin: 0 auto 24px;
+    }
+    .hero-desc {
+      font-size: clamp(1.1rem, 2vw, 1.35rem);
+      color: var(--text-muted);
+      max-width: 620px;
+      margin: 0 auto 40px;
+      line-height: 1.7;
+    }
+    .hero-actions { display: flex; justify-content: center; flex-wrap: wrap; gap: 16px; align-items: center; }
+    .btn-outline {
+      border: 1px solid var(--border-strong);
+      background: var(--surface);
+      color: var(--text);
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 10px 24px;
+      border-radius: var(--radius);
+      text-decoration: none;
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      transition: border-color 0.15s ease;
+    }
+    .btn-outline:hover { border-color: var(--text); }
+
+    /* Section 02: Signature Moment (Spatial Material Explorer) */
+    .section { padding: clamp(64px, 8vw, 100px) 0; border-bottom: 1px solid var(--border); }
+    .section-header { text-align: center; margin-bottom: 48px; }
+    .section-eyebrow { font-size: 0.8rem; font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 8px; }
+    .section-title { font-family: var(--font-serif); font-size: clamp(2rem, 4vw, 3rem); font-weight: 600; letter-spacing: -0.01em; }
+
+    .signature-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 40px;
+    }
+    @media (max-width: 860px) {
+      .signature-grid { grid-template-columns: 1fr; padding: 24px; }
+    }
+
+    .space-preview {
+      background: var(--surface-subtle);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 320px;
+    }
+    .space-badge { font-family: var(--font-serif); font-size: 1.3rem; font-style: italic; color: var(--accent); margin-bottom: 12px; }
+    .space-heading { font-family: var(--font-serif); font-size: 2.2rem; font-weight: 600; line-height: 1.15; margin-bottom: 12px; }
+    .space-meta-table { width: 100%; border-collapse: collapse; margin-top: 24px; font-size: 0.85rem; }
+    .space-meta-table td { padding: 10px 0; border-bottom: 1px solid var(--border); color: var(--text-muted); }
+    .space-meta-table td:last-child { text-align: right; color: var(--text); font-weight: 600; }
+
+    .config-col { display: flex; flex-direction: column; justify-content: space-between; gap: 24px; }
+    .config-options { display: flex; flex-direction: column; gap: 12px; }
+    .opt-card {
+      border: 1px solid var(--border);
+      background: var(--bg);
+      border-radius: var(--radius);
+      padding: 16px 20px;
+      cursor: pointer;
+      min-height: 44px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: border-color 0.15s ease;
+    }
+    .opt-card:hover { border-color: var(--accent); }
+    .opt-card.active { border-color: var(--accent); background: var(--surface); }
+
+    /* Bento Grid */
+    .editorial-bento {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 28px;
+    }
+    .eb-8 { grid-column: span 8; }
+    .eb-4 { grid-column: span 4; }
+    .eb-6 { grid-column: span 6; }
+    @media (max-width: 860px) {
+      .eb-8, .eb-4, .eb-6 { grid-column: span 12; }
+    }
+
+    .eb-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 36px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .eb-num { font-size: 0.8rem; color: var(--accent); font-weight: 700; margin-bottom: 16px; }
+    .eb-card h3 { font-family: var(--font-serif); font-size: 1.8rem; font-weight: 600; margin-bottom: 14px; }
+    .eb-card p { color: var(--text-muted); line-height: 1.7; font-size: 0.95rem; }
+
+    /* Specification Catalog Table */
+    .catalog-wrap {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow-x: auto;
+    }
+    .catalog-table { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.9rem; min-width: 600px; }
+    .catalog-table th, .catalog-table td { padding: 18px 24px; border-bottom: 1px solid var(--border); }
+    .catalog-table th { font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted); background: var(--surface-subtle); letter-spacing: 0.05em; }
+    .catalog-table td:first-child { font-family: var(--font-serif); font-size: 1.1rem; font-weight: 600; }
+    .catalog-table tr:last-child td { border-bottom: none; }
+
+    /* Banner */
+    .banner-luxury {
+      background: var(--surface-subtle);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: clamp(48px, 8vw, 80px) clamp(24px, 6vw, 64px);
+      text-align: center;
+    }
+    .banner-title { font-family: var(--font-serif); font-size: clamp(2.2rem, 5vw, 3.6rem); font-weight: 500; margin-bottom: 16px; }
+
+    /* Footer */
+    footer { padding: 64px 0 40px; color: var(--text-muted); font-size: 0.85rem; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; margin-bottom: 48px; }
+    @media (max-width: 768px) { .footer-grid { grid-template-columns: 1fr; } }
+    .footer-brand { font-family: var(--font-serif); font-size: 1.4rem; font-weight: 700; color: var(--text); margin-bottom: 12px; }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-top: 12px; }
+    .footer-links a { color: var(--text-muted); text-decoration: none; min-height: 44px; display: inline-flex; align-items: center; }
+    .footer-links a:hover { color: var(--text); }
+  </style>
+</head>
+<body>
+
+  <!-- Top Nav -->
+  <header class="nav">
+    <div class="container nav-inner">
+      <a href="../index.html" class="brand">Maison Verre</a>
+      <nav class="nav-links" id="navMenu">
+        <a href="#materials" class="nav-link">Materials</a>
+        <a href="#philosophy" class="nav-link">Philosophy</a>
+        <a href="#catalog" class="nav-link">Catalog</a>
+        <a href="../index.html" class="nav-link">Hub</a>
+        <a href="#inquire" class="btn-luxury">Reserve Atelier</a>
+      </nav>
+      <button class="mobile-toggle" onclick="toggleMenu()" aria-label="Toggle navigation">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- 01 Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-eyebrow">Atelier Residence // Curated 2026</div>
+        <h1 class="hero-title">Elegance in Restraint, Poise in Space.</h1>
+        <p class="hero-desc">
+          Bespoke architectural living spaces. Generous negative space, Cormorant typography, warm cream foundations, and subtle amber accents.
+        </p>
+        <div class="hero-actions">
+          <a href="#materials" class="btn-luxury">Explore Spatial Materials</a>
+          <a href="../index.html" class="btn-outline">Return to CraftSpec Hub</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 02 Signature Moment: Interactive Space & Material Explorer -->
+    <section class="section" id="materials">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-eyebrow">Signature Moment // The Tactile Study</div>
+          <h2 class="section-title">Spatial Material Invariants</h2>
+        </div>
+
+        <div class="signature-grid">
+          <div class="space-preview">
+            <div>
+              <div class="space-badge" id="spaceTag">Atelier Suite 01</div>
+              <div class="space-heading" id="spaceTitle">Travertine & Brushed Amber</div>
+              <p style="color:var(--text-muted); font-size:0.95rem;" id="spaceDesc">
+                Natural warm Italian travertine stone paired with hand-finished warm bronze hardware. High editorial breathing space.
+              </p>
+            </div>
+
+            <table class="space-meta-table">
+              <tbody>
+                <tr><td>Foundation Canvas</td><td id="spaceCanvas">#FDFBF7 (Warm Cream)</td></tr>
+                <tr><td>Surface Elevation</td><td>#FFFFFF (Pure Linen)</td></tr>
+                <tr><td>Accent Resonance</td><td id="spaceAccent">#B45309 (Warm Amber)</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="config-col">
+            <div>
+              <h3 style="font-family:var(--font-serif); font-size:1.5rem; margin-bottom:8px;">Tactile Palette Selector</h3>
+              <p style="color:var(--text-muted); font-size:0.9rem;">Interact to shift spatial textures. Notice immediate visual balance without jarring re-renders.</p>
+            </div>
+
+            <div class="config-options">
+              <div class="opt-card active" onclick="setSpace('Atelier Suite 01', 'Travertine & Brushed Amber', '#FDFBF7', '#B45309', this)">
+                <div><strong>Suite 01: Travertine</strong><br><span style="font-size:0.8rem; color:var(--text-muted);">Warm cream stone with amber signal</span></div>
+                <span>↗</span>
+              </div>
+              <div class="opt-card" onclick="setSpace('Atelier Suite 02', 'Smoked Oak & Charcoal', '#F7F4EE', '#9A3412', this)">
+                <div><strong>Suite 02: Smoked Oak</strong><br><span style="font-size:0.8rem; color:var(--text-muted);">Deep natural grain with rust undertones</span></div>
+                <span>↗</span>
+              </div>
+              <div class="opt-card" onclick="setSpace('Atelier Suite 03', 'Calacatta & Bronze', '#FAFAF9', '#D97706', this)">
+                <div><strong>Suite 03: Calacatta Marble</strong><br><span style="font-size:0.8rem; color:var(--text-muted);">Sculptural white marble with gold accents</span></div>
+                <span>↗</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03 Architectural Bento Grid -->
+    <section class="section" id="philosophy">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-eyebrow">Design Tenets</div>
+          <h2 class="section-title">The Discipline of Quiet Luxury</h2>
+        </div>
+
+        <div class="editorial-bento">
+          <div class="eb-card eb-8">
+            <span class="eb-num">TENET I // SPACE OVER VOLUME</span>
+            <h3>The Luxury of What Is Omitted</h3>
+            <p>
+              AI interfaces default to filling every pixel with cards, badges, and gradients. Quiet Luxury does the opposite: it celebrates the power of negative space to give focus and weight to what remains.
+            </p>
+          </div>
+          <div class="eb-card eb-4">
+            <span class="eb-num">TENET II // TOKEN DISCIPLINE</span>
+            <h3>Strict Systemic Tokens</h3>
+            <p>
+              Warm ivory, muted stone, and refined amber. Every property is bound to systemic roots.
+            </p>
+          </div>
+          <div class="eb-card eb-6">
+            <span class="eb-num">TENET III // TYPOGRAPHIC STATURE</span>
+            <h3>Cormorant Display Contrast</h3>
+            <p>
+              Classical Roman proportions on headlines, paired with modern geometric body faces for effortless readability.
+            </p>
+          </div>
+          <div class="eb-card eb-6">
+            <span class="eb-num">TENET IV // ACCESSIBLE INTEGRITY</span>
+            <h3>44px Minimum Touchpoints</h3>
+            <p>
+              Elegance never compromises usability. Every interactive touch target exceeds 44×44px for effortless mobile grace.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04 Catalog Series -->
+    <section class="section" id="catalog">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-eyebrow">Atelier Archive</div>
+          <h2 class="section-title">Documented Commissions</h2>
+        </div>
+
+        <div class="catalog-wrap">
+          <table class="catalog-table">
+            <thead>
+              <tr>
+                <th>Commission</th>
+                <th>Location</th>
+                <th>Materiality</th>
+                <th>Scope</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Villa Palladio</td>
+                <td>Lake Como, Italy</td>
+                <td>Travertine & Antique Bronze</td>
+                <td>Full Residence Architecture</td>
+              </tr>
+              <tr>
+                <td>Kiyomizu Residence</td>
+                <td>Kyoto, Japan</td>
+                <td>Hinoki Cypress & Basalt</td>
+                <td>Interior Atelier & Tea House</td>
+              </tr>
+              <tr>
+                <td>Engadin Chalet</td>
+                <td>St. Moritz, Switzerland</td>
+                <td>Alpine Granite & Larch</td>
+                <td>Private Mountain Estate</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05 Banner -->
+    <section class="section" id="inquire">
+      <div class="container">
+        <div class="banner-luxury">
+          <h2 class="banner-title">Begin Your Architectural Project.</h2>
+          <p style="color:var(--text-muted); max-width:540px; margin:0 auto 32px;">Crafted upon the rigorous principles of CraftSpec and The Floor invariants.</p>
+          <div style="display:flex; justify-content:center; gap:16px; flex-wrap:wrap;">
+            <a href="../index.html" class="btn-luxury">Explore CraftSpec Hub</a>
+            <a href="https://github.com/makeskills/craftspec" target="_blank" class="btn-outline">GitHub Source</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">Maison Verre // CraftSpec</div>
+          <p style="line-height:1.7;">Quiet Luxury Archetype Showcase. Built with <code>@makeskills/craftspec</code>.</p>
+        </div>
+        <div>
+          <div style="font-weight:700; color:var(--text); margin-bottom:12px;">Archetypes</div>
+          <ul class="footer-links">
+            <li><a href="swiss.html">Swiss Editorial</a></li>
+            <li><a href="dark-tech.html">Tactical Dark Tech</a></li>
+            <li><a href="brutalist.html">Industrial Brutalist</a></li>
+            <li><a href="cyber.html">Cyber Blueprint</a></li>
+          </ul>
+        </div>
+        <div>
+          <div style="font-weight:700; color:var(--text); margin-bottom:12px;">Installation</div>
+          <ul class="footer-links">
+            <li><span>npm i @makeskills/craftspec</span></li>
+            <li><span>npx @makeskills/craftspec init</span></li>
+          </ul>
+        </div>
+      </div>
+      <div style="border-top:1px solid var(--border); padding-top:24px; text-align:center;">
+        CraftSpec Quiet Luxury Edition · Fully Responsive · MIT License
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('navMenu').classList.toggle('open');
+    }
+
+    function setSpace(tag, title, canvas, accent, el) {
+      document.querySelectorAll('.opt-card').forEach(c => c.classList.remove('active'));
+      el.classList.add('active');
+      document.getElementById('spaceTag').textContent = tag;
+      document.getElementById('spaceTitle').textContent = title;
+      document.getElementById('spaceCanvas').textContent = canvas;
+      document.getElementById('spaceAccent').textContent = accent;
+    }
+  </script>
+</body>
+</html>

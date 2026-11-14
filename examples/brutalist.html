@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Forge Dynamics — Industrial Brutalist Automation</title>
+  <meta name="description" content="Industrial machinery and heavy automation engineering. Rigid grids, 2px black framing, tactile mechanics, The Floor invariants.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Chivo:wght@700;900&display=swap" rel="stylesheet">
+  <style>
+    /* Hallmark Stamp: craftspec-industrial-brutalist-landing | Full Landing Page | The Floor Compliant */
+    :root {
+      --bg: #E5E5E5;
+      --surface: #FFFFFF;
+      --surface-subtle: #F3F4F6;
+      --text: #000000;
+      --text-muted: #4B5563;
+      --border: #000000;
+      --accent: #FF5500;
+      --accent-hover: #E04B00;
+      --font-mono: 'Space Mono', monospace;
+      --font-display: 'Chivo', sans-serif;
+      --border-thick: 2px solid #000000;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-mono);
+      overflow-x: clip;
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.5;
+    }
+
+    :focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+    .container { max-width: 1240px; margin: 0 auto; padding: 0 24px; }
+
+    /* Nav */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--surface);
+      border-bottom: var(--border-thick);
+      height: 68px;
+      display: flex;
+      align-items: center;
+    }
+    .nav-inner { display: flex; justify-content: space-between; align-items: center; width: 100%; }
+    .brand { font-family: var(--font-display); font-weight: 900; font-size: 1.25rem; color: var(--text); text-decoration: none; text-transform: uppercase; letter-spacing: -0.02em; }
+    
+    .nav-links { display: flex; align-items: center; gap: 8px; }
+    .nav-link { font-size: 0.85rem; font-weight: 700; color: var(--text); text-decoration: none; padding: 10px 14px; min-height: 44px; display: inline-flex; align-items: center; }
+    .nav-link:hover { text-decoration: underline; }
+
+    .btn-brutal {
+      background: var(--accent);
+      color: #000;
+      border: 2px solid #000;
+      box-shadow: 3px 3px 0 #000;
+      font-family: var(--font-mono);
+      font-weight: 700;
+      font-size: 0.85rem;
+      padding: 10px 18px;
+      text-decoration: none;
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      transition: transform 0.1s ease, box-shadow 0.1s ease;
+    }
+    .btn-brutal:hover { transform: translate(-1px, -1px); box-shadow: 4px 4px 0 #000; }
+    .btn-brutal:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 #000; }
+
+    .mobile-toggle { display: none; background: none; border: 2px solid #000; padding: 8px 12px; min-height: 44px; min-width: 44px; align-items: center; justify-content: center; cursor: pointer; }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 68px;
+        left: 0;
+        right: 0;
+        background: var(--surface);
+        border-bottom: 2px solid #000;
+        padding: 20px 24px;
+        gap: 12px;
+      }
+      .mobile-toggle { display: flex; }
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: clamp(48px, 8vw, 84px) 0 64px;
+      border-bottom: var(--border-thick);
+    }
+    .hero-code { font-size: 0.8rem; font-weight: 700; color: var(--accent); margin-bottom: 16px; letter-spacing: 0.05em; }
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 6.5vw, 4.6rem);
+      font-weight: 900;
+      line-height: 1.02;
+      text-transform: uppercase;
+      letter-spacing: -0.03em;
+      margin-bottom: 24px;
+      max-width: 980px;
+    }
+    .hero-desc {
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      color: var(--text-muted);
+      max-width: 680px;
+      margin-bottom: 36px;
+      line-height: 1.6;
+    }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; }
+    .btn-outline {
+      background: var(--surface);
+      color: #000;
+      border: 2px solid #000;
+      box-shadow: 3px 3px 0 #000;
+      font-weight: 700;
+      font-size: 0.85rem;
+      padding: 10px 18px;
+      text-decoration: none;
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      transition: transform 0.1s ease;
+    }
+    .btn-outline:hover { transform: translate(-1px, -1px); box-shadow: 4px 4px 0 #000; }
+
+    /* Section 02: Signature Moment (Hydraulic Telemetry Simulator) */
+    .section { padding: clamp(60px, 8vw, 100px) 0; border-bottom: var(--border-thick); }
+    .section-eyebrow { font-size: 0.8rem; font-weight: 700; color: var(--accent); text-transform: uppercase; margin-bottom: 8px; }
+    .section-title { font-family: var(--font-display); font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 900; text-transform: uppercase; letter-spacing: -0.02em; margin-bottom: 40px; }
+
+    .brutal-grid {
+      display: grid;
+      grid-template-columns: 7fr 5fr;
+      gap: 24px;
+    }
+    @media (max-width: 860px) {
+      .brutal-grid { grid-template-columns: 1fr; }
+    }
+
+    .machine-box {
+      background: var(--surface);
+      border: var(--border-thick);
+      box-shadow: 6px 6px 0 #000;
+      padding: 32px;
+    }
+    .machine-head { display: flex; justify-content: space-between; border-bottom: 2px solid #000; padding-bottom: 16px; margin-bottom: 20px; font-weight: 700; font-size: 0.85rem; }
+    .dial-display { font-family: var(--font-display); font-size: 3.5rem; font-weight: 900; line-height: 1; margin-bottom: 12px; }
+    
+    .status-table { width: 100%; border-collapse: collapse; margin-top: 24px; font-size: 0.85rem; }
+    .status-table th, .status-table td { padding: 10px 0; border-bottom: 1px solid #CCC; text-align: left; }
+    .status-table th { font-weight: 700; text-transform: uppercase; font-size: 0.75rem; }
+    .status-table td:last-child { text-align: right; font-weight: 700; }
+
+    .controls-box {
+      background: var(--surface);
+      border: var(--border-thick);
+      box-shadow: 6px 6px 0 #000;
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .piston-selector { display: flex; flex-direction: column; gap: 10px; }
+    .piston-btn {
+      padding: 12px 16px;
+      border: 2px solid #000;
+      background: var(--surface-subtle);
+      font-family: var(--font-mono);
+      font-weight: 700;
+      font-size: 0.85rem;
+      cursor: pointer;
+      text-align: left;
+      min-height: 44px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background 0.15s ease;
+    }
+    .piston-btn.active { background: #000; color: #FFF; }
+
+    /* Bento Grid */
+    .bento-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 24px;
+    }
+    .b-8 { grid-column: span 8; }
+    .b-4 { grid-column: span 4; }
+    .b-6 { grid-column: span 6; }
+    @media (max-width: 860px) {
+      .b-8, .b-4, .b-6 { grid-column: span 12; }
+    }
+
+    .bento-card {
+      background: var(--surface);
+      border: var(--border-thick);
+      box-shadow: 5px 5px 0 #000;
+      padding: 32px;
+    }
+    .bento-num { font-size: 0.8rem; font-weight: 700; color: var(--accent); margin-bottom: 12px; }
+    .bento-card h3 { font-family: var(--font-display); font-size: 1.4rem; font-weight: 900; text-transform: uppercase; margin-bottom: 12px; }
+    .bento-card p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; }
+
+    /* Series Table */
+    .table-wrap {
+      background: var(--surface);
+      border: var(--border-thick);
+      box-shadow: 6px 6px 0 #000;
+      overflow-x: auto;
+    }
+    .spec-table { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.9rem; min-width: 600px; }
+    .spec-table th, .spec-table td { padding: 18px 24px; border-bottom: 2px solid #000; }
+    .spec-table th { font-weight: 700; text-transform: uppercase; font-size: 0.8rem; background: var(--surface-subtle); }
+    .spec-table tr:last-child td { border-bottom: none; }
+
+    /* Banner */
+    .cta-banner {
+      background: #000;
+      color: #FFF;
+      border: var(--border-thick);
+      box-shadow: 6px 6px 0 var(--accent);
+      padding: clamp(40px, 6vw, 64px) clamp(24px, 5vw, 48px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 32px;
+    }
+    .cta-heading { font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3rem); font-weight: 900; text-transform: uppercase; max-width: 600px; line-height: 1.1; }
+
+    footer { padding: 64px 0 40px; font-size: 0.85rem; color: var(--text-muted); }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; margin-bottom: 48px; }
+    @media (max-width: 768px) { .footer-grid { grid-template-columns: 1fr; } }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 8px; margin-top: 12px; }
+    .footer-links a { color: #000; font-weight: 700; text-decoration: none; min-height: 44px; display: inline-flex; align-items: center; }
+    .footer-links a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+
+  <!-- Nav -->
+  <header class="nav">
+    <div class="container nav-inner">
+      <a href="../index.html" class="brand">FORGE DYNAMICS // INDUSTRIAL</a>
+      <nav class="nav-links" id="navLinks">
+        <a href="#simulator" class="nav-link">Telemetry</a>
+        <a href="#invariants" class="nav-link">Invariants</a>
+        <a href="#equipment" class="nav-link">Machinery</a>
+        <a href="../index.html" class="nav-link">Hub</a>
+        <a href="#quote" class="btn-brutal">COMMISSION BUILD</a>
+      </nav>
+      <button class="mobile-toggle" onclick="toggleMenu()" aria-label="Toggle navigation">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- 01 Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-code">[SPEC_ID: BRUTALIST_04 // INDUSTRIAL RUNTIME]</div>
+        <h1 class="hero-title">RIGID GRIDS. EXTREME TYPE SCALE. NO SLOP.</h1>
+        <p class="hero-desc">
+          High-contrast tactile blueprint aesthetics. Heavy 2px solid borders, mechanical mono headings, industrial alert orange, and zero artificial glow.
+        </p>
+        <div class="hero-actions">
+          <a href="#simulator" class="btn-brutal">ACTIVATE HYDRAULIC BENCH</a>
+          <a href="../index.html" class="btn-outline">RETURN TO CRAFTSPEC HUB</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 02 Signature Moment: Interactive Mechanical Simulator -->
+    <section class="section" id="simulator">
+      <div class="container">
+        <div class="section-eyebrow">Signature Artifact // Mechanical Telemetry</div>
+        <h2 class="section-title">Hydraulic Load Simulator</h2>
+
+        <div class="brutal-grid">
+          <div class="machine-box">
+            <div class="machine-head">
+              <span>FORGE RIG 01 // LOAD_MONITOR</span>
+              <span style="color:var(--accent);">● ACTIVE CYCLE</span>
+            </div>
+            <div class="dial-display" id="pressureVal">3,200 PSI</div>
+            <div style="font-weight:700; color:var(--text-muted);" id="statusLabel">TORQUE LOAD: OPTIMAL RANGE</div>
+
+            <table class="status-table">
+              <thead>
+                <tr><th>METRIC</th><th>MEASUREMENT</th><th>SPEC TOLERANCE</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Cycle Cadence</td><td id="cadenceVal">1.4 sec</td><td>± 0.05s</td></tr>
+                <tr><td>Hydraulic Viscosity</td><td>ISO VG 46</td><td>99.4% Purity</td></tr>
+                <tr><td>Chamber Seal</td><td>Dual Nitrile Ring</td><td>Zero Leakage</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="controls-box">
+            <div>
+              <h3 style="font-family:var(--font-display); font-size:1.3rem; text-transform:uppercase; margin-bottom:8px;">Load Profile Selector</h3>
+              <p style="font-size:0.85rem; color:var(--text-muted);">Switch hydraulic stress profile. Observe tactile mechanical changes without layout jitter.</p>
+            </div>
+
+            <div class="piston-selector">
+              <button class="piston-btn active" onclick="setPressure('3,200 PSI', '1.4 sec', 'TORQUE LOAD: OPTIMAL RANGE', this)">
+                <span>STANDARD RUNTIME</span><span>[3,200 PSI]</span>
+              </button>
+              <button class="piston-btn" onclick="setPressure('4,850 PSI', '0.9 sec', 'HEAVY COMPRESSION MODE', this)">
+                <span>HEAVY COMPRESSION</span><span>[4,850 PSI]</span>
+              </button>
+              <button class="piston-btn" onclick="setPressure('6,400 PSI', '0.5 sec', 'SURGE PRESS STRESS', this)">
+                <span>BURST FORGING</span><span>[6,400 PSI]</span>
+              </button>
+            </div>
+
+            <div style="font-size:0.75rem; color:var(--text-muted);">
+              All interactive click elements exceed 44×44px tactile dimensions.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03 Bento Grid: 4 Heavy Engineering Invariants -->
+    <section class="section" id="invariants">
+      <div class="container">
+        <div class="section-eyebrow">Engineering Rigor</div>
+        <h2 class="section-title">Industrial Floor Invariants</h2>
+
+        <div class="bento-grid">
+          <div class="bento-card b-8">
+            <div class="bento-num">RULE 01 // MECHANICAL TACTILITY</div>
+            <h3>HARDLINE VISIBLE FRAMING</h3>
+            <p>
+              Layout parameters are enforced through visible architectural 2px framing rather than invisible soft gradients. Boundaries are concrete, physical, and unequivocal.
+            </p>
+          </div>
+          <div class="bento-card b-4">
+            <div class="bento-num">RULE 02 // REAL METRICS</div>
+            <h3>ZERO INVENTED NUMBERS</h3>
+            <p>
+              Every PSI and cycle tolerance represents honest mechanical data. No fake ratings, no fluff.
+            </p>
+          </div>
+          <div class="bento-card b-4">
+            <div class="bento-num">RULE 03 // SPACE MONO</div>
+            <h3>TECHNICAL READABILITY</h3>
+            <p>
+              Monospace typography delivers absolute columnar precision across dense machinery specs.
+            </p>
+          </div>
+          <div class="bento-card b-8">
+            <div class="bento-num">RULE 04 // 1280 × 800 STABILITY</div>
+            <h3>HERO ANCHOR INVARIANT</h3>
+            <p>
+              The primary message and main operational controls stay permanently anchored on initial load across every screen aspect ratio.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04 Equipment Catalog Series -->
+    <section class="section" id="equipment">
+      <div class="container">
+        <div class="section-eyebrow">Equipment Registry</div>
+        <h2 class="section-title">Heavy Hydraulic Presses</h2>
+
+        <div class="table-wrap">
+          <table class="spec-table">
+            <thead>
+              <tr>
+                <th>MACHINERY MODEL</th>
+                <th>FORCE CAP</th>
+                <th>BED FOOTPRINT</th>
+                <th>PUMP ENGINE</th>
+                <th>PRODUCTION STATUS</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>FD-FORGE-500</code></td>
+                <td>500 Metric Tons</td>
+                <td>1,800 × 1,200 mm</td>
+                <td>75 kW Electric-Hydraulic</td>
+                <td><strong>● IMMEDIATE FABRICATION</strong></td>
+              </tr>
+              <tr>
+                <td><code>FD-FORGE-1200</code></td>
+                <td>1,200 Metric Tons</td>
+                <td>2,400 × 1,600 mm</td>
+                <td>150 kW Variable Drive</td>
+                <td><strong>● QUEUED FOR Q1</strong></td>
+              </tr>
+              <tr>
+                <td><code>FD-FORGE-3000</code></td>
+                <td>3,000 Metric Tons</td>
+                <td>3,600 × 2,200 mm</td>
+                <td>Twin Hydraulic Bank</td>
+                <td><strong>CUSTOM RUN ONLY</strong></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05 Call to Action Banner -->
+    <section class="section" id="quote">
+      <div class="container">
+        <div class="cta-banner">
+          <div>
+            <h2 class="cta-heading">ORDER HEAVY MECHANICAL SYSTEMS.</h2>
+            <p style="color:#A1A1AA; font-size:1rem; margin-top:12px;">Constructed upon CraftSpec & The Floor engineering invariants.</p>
+          </div>
+          <div style="display:flex; gap:16px; flex-wrap:wrap;">
+            <a href="../index.html" class="btn-brutal" style="background:#FFF; color:#000;">EXPLORE HUB PLAYGROUND</a>
+            <a href="https://github.com/makeskills/craftspec" target="_blank" class="btn-outline" style="background:transparent; color:#FFF; border-color:#FFF; box-shadow:3px 3px 0 #FFF;">GITHUB CODE</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div style="font-family:var(--font-display); font-weight:900; font-size:1.2rem; color:#000; margin-bottom:12px;">FORGE DYNAMICS // CRAFTSPEC</div>
+          <p style="line-height:1.6;">Industrial Brutalist Reference Landing Page. Powered by <code>@makeskills/craftspec</code>.</p>
+        </div>
+        <div>
+          <div style="font-weight:700; color:#000; margin-bottom:12px;">THEME SHOWCASES</div>
+          <ul class="footer-links">
+            <li><a href="swiss.html">Swiss Editorial</a></li>
+            <li><a href="dark-tech.html">Tactical Dark Tech</a></li>
+            <li><a href="luxury.html">Quiet Luxury</a></li>
+            <li><a href="cyber.html">Cyber Blueprint</a></li>
+          </ul>
+        </div>
+        <div>
+          <div style="font-weight:700; color:#000; margin-bottom:12px;">INSTALLATION</div>
+          <ul class="footer-links">
+            <li><span>npm i @makeskills/craftspec</span></li>
+            <li><span>npx @makeskills/craftspec init</span></li>
+          </ul>
+        </div>
+      </div>
+      <div style="border-top:2px solid #000; padding-top:24px; text-align:center;">
+        CraftSpec Industrial Brutalist Edition · Fully Responsive · MIT License
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('navLinks').classList.toggle('open');
+    }
+
+    function setPressure(press, cadence, status, btn) {
+      document.querySelectorAll('.piston-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('pressureVal').textContent = press;
+      document.getElementById('cadenceVal').textContent = cadence;
+      document.getElementById('statusLabel').textContent = status;
+    }
+  </script>
+</body>
+</html>
