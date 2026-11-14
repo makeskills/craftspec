@@ -1,0 +1,49 @@
+{
+  "name": "craftspec",
+  "version": "1.0.0",
+  "description": "頂級 AI 設計需求架構師與規格最佳化引擎：以 Ask Once 精準提問、The Floor 硬性底線防禦、行動端防爆與風格抽卡盲盒，將模糊需求重構為極致專業、抗模板化的 AI 設計規格與提示詞。",
+  "type": "module",
+  "main": "bin/craftspec.mjs",
+  "bin": {
+    "craftspec": "./bin/craftspec.mjs"
+  },
+  "files": [
+    "bin",
+    "skills",
+    ".agents",
+    ".cursor",
+    ".claude-plugin",
+    ".devin-plugin",
+    ".github",
+    "AGENTS.md",
+    "CLAUDE.md",
+    ".cursorrules",
+    ".windsurfrules",
+    "README.md",
+    "vercel.json"
+  ],
+  "keywords": [
+    "ai",
+    "design",
+    "ui",
+    "ux",
+    "prompt-optimizer",
+    "the-floor",
+    "anti-slop",
+    "craftspec",
+    "devin",
+    "cursor",
+    "claude",
+    "windsurf"
+  ],
+  "author": "makeskills",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/makeskills/craftspec.git"
+  },
+  "bugs": {
+    "url": "https://github.com/makeskills/craftspec/issues"
+  },
+  "homepage": "https://github.com/makeskills/craftspec#readme"
+}

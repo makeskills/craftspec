@@ -52,13 +52,32 @@ craftspec/
 
 ---
 
-## 安裝方式
+## 安裝與使用方式
+
+### 方式 A：使用 npx 極速體驗（零安裝，支援所有專案）
+
+在您的前端專案根目錄執行：
+
+```bash
+# 1. 一鍵將 CraftSpec 設計規範注入當前專案（自動產生 .cursorrules, .windsurfrules, AGENTS.md, CLAUDE.md 等）
+npx craftspec init
+
+# 2. 直接在終端機優化設計需求
+npx craftspec "我想做一個暗黑極簡的手錶電商網站"
+
+# 3. 隨機風格抽卡盲盒
+npx craftspec shuffle
+```
+
+---
+
+### 方式 B：作為 Devin / Agent Plugin 安裝
 
 在任何支援 Devin / Agent Plugins 的終端機或 IDE 中執行：
 
 ```bash
 # 從 GitHub 遠端安裝
-devin plugins install <GitHub帳號>/craftspec
+devin plugins install makeskills/craftspec
 ```
 
 若要在本機進行開發與熱更新：
@@ -69,23 +88,23 @@ devin plugins install --local ./
 
 ---
 
-## 使用方式
+### 方式 C：在 IDE / 對話框中呼叫
 
 安裝後，在對話框輸入 `/` 即可自動跳出 `/craftspec` 選單：
 
-### 1. 全新設計需求
+#### 1. 全新設計需求
 ```text
 /craftspec 想做一個現代化形象官網
 ```
 AI 會先跳出「Ask Once」四大維度卡片供您選擇，確認後輸出包含專屬記憶點（Signature）、Design Tokens 與可直接交給 AI 的 Prompt。
 
-### 2. 靈感抽卡盲盒
+#### 2. 靈感抽卡盲盒
 ```text
 /craftspec 隨機抽卡
 ```
 AI 會自動從內建的 6 組高階美學庫中抽取一套獨特方案，打破審美疲勞。
 
-### 3. 現有頁面洗白重構
+#### 3. 現有頁面洗白重構
 ```text
 /craftspec 改版現有首頁，去除 AI 模板感 [附上代碼或描述]
 ```
