@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kami Atelier — Wabi-Sabi Handmade Paper</title>
+  <meta name="description" content="Handcrafted washi paper and quiet printed matter. Built with CraftSpec Wabi-Sabi Paper invariants.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700&family=Noto+Sans:wght@400;500;600&family=Noto+Serif+JP:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    /* Hallmark Stamp: craftspec-wabi-sabi-landing | Shape: quiet folio | The Floor Compliant */
+    :root {
+      --bg: #F4EFEA;
+      --surface: #FFFFFF;
+      --surface-subtle: #EDE7DF;
+      --text: #1C1917;
+      --text-muted: #78716C;
+      --text-faint: #A8A29E;
+      --border: #D6CCC2;
+      --accent: #4A5568;
+      --font-display: 'Shippori Mincho', 'Noto Serif JP', serif;
+      --font-body: 'Noto Sans', -apple-system, sans-serif;
+      --font-jp: 'Noto Serif JP', 'Shippori Mincho', serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      overflow-x: clip;
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.7;
+    }
+
+    :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+    .container { max-width: 980px; margin: 0 auto; padding: 0 28px; }
+
+    /* Nav: barely there — wordmark, sparse links */
+    .nav { padding: 32px 0; }
+    .nav-inner { display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+    .brand { font-family: var(--font-display); font-size: 1.15rem; font-weight: 600; color: var(--text); text-decoration: none; display: flex; align-items: baseline; gap: 10px; }
+    .brand .jp { font-family: var(--font-jp); font-size: 0.85rem; color: var(--text-muted); }
+    .nav-links { display: flex; align-items: center; gap: 22px; }
+    .nav-link { font-size: 0.82rem; color: var(--text-muted); text-decoration: none; min-height: 44px; display: inline-flex; align-items: center; }
+    .nav-link:hover { color: var(--text); }
+
+    .mobile-toggle { display: none; background: none; border: 1px solid var(--border); padding: 8px 12px; min-height: 44px; min-width: 44px; align-items: center; justify-content: center; color: var(--text); cursor: pointer; }
+    @media (max-width: 720px) {
+      .nav-links { display: none; }
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 88px;
+        left: 0;
+        right: 0;
+        background: var(--bg);
+        border-bottom: 1px solid var(--border);
+        padding: 16px 28px;
+        z-index: 100;
+      }
+      .mobile-toggle { display: flex; }
+      .nav-inner { position: relative; }
+    }
+
+    /* Hero: offset column + vertical JP annotation on the far edge */
+    .hero {
+      position: relative;
+      padding: clamp(72px, 12vw, 140px) 0 clamp(80px, 11vw, 130px);
+    }
+    .hero-inner { max-width: 620px; }
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.6rem, 6.5vw, 4.6rem);
+      font-weight: 500;
+      line-height: 1.15;
+      letter-spacing: 0.01em;
+      margin-bottom: 24px;
+    }
+    .hero-desc {
+      color: var(--text-muted);
+      font-size: clamp(0.98rem, 1.7vw, 1.1rem);
+      max-width: 460px;
+      margin-bottom: 36px;
+    }
+    .hero-link {
+      color: var(--accent);
+      font-size: 0.88rem;
+      font-weight: 600;
+      text-decoration: none;
+      border-bottom: 1px solid var(--accent);
+      padding-bottom: 3px;
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+    }
+    .hero-link:hover { opacity: 0.75; }
+    .jp-vertical {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      writing-mode: vertical-rl;
+      font-family: var(--font-jp);
+      font-size: 1.05rem;
+      letter-spacing: 0.4em;
+      color: var(--text-muted);
+      user-select: none;
+    }
+    @media (max-width: 720px) { .jp-vertical { display: none; } }
+
+    /* Sections: enormous restful rhythm */
+    .section { padding: clamp(72px, 11vw, 130px) 0; }
+    .section + .section { border-top: 1px solid var(--border); }
+    .section-kicker { font-family: var(--font-jp); font-size: 0.85rem; color: var(--text-muted); letter-spacing: 0.2em; margin-bottom: 14px; }
+    .section-title { font-family: var(--font-display); font-size: clamp(1.9rem, 4vw, 2.8rem); font-weight: 500; margin-bottom: 20px; }
+    .section-desc { color: var(--text-muted); max-width: 520px; margin-bottom: 48px; }
+
+    /* Fiber study: tonal field + quiet selector */
+    .fiber-study { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+    @media (max-width: 760px) { .fiber-study { grid-template-columns: 1fr; gap: 32px; } }
+    .fiber-field {
+      min-height: 340px;
+      display: flex;
+      align-items: flex-end;
+      padding: 24px;
+      transition: opacity 0.2s ease;
+    }
+    .fiber-field .kanji {
+      font-family: var(--font-jp);
+      font-size: clamp(4rem, 10vw, 7rem);
+      color: rgba(28, 25, 23, 0.16);
+      line-height: 1;
+    }
+    .fiber-info .name { font-family: var(--font-display); font-size: 1.6rem; font-weight: 600; margin-bottom: 6px; }
+    .fiber-info .jp { font-family: var(--font-jp); font-size: 0.9rem; color: var(--text-muted); margin-bottom: 18px; }
+    .fiber-info p { color: var(--text-muted); font-size: 0.92rem; margin-bottom: 28px; }
+    .fiber-opts { display: flex; flex-direction: column; }
+    .fiber-btn {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: none;
+      border: none;
+      border-top: 1px solid var(--border);
+      font-family: inherit;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      padding: 15px 2px;
+      min-height: 52px;
+      cursor: pointer;
+      text-align: left;
+      transition: opacity 0.15s ease;
+    }
+    .fiber-btn:last-child { border-bottom: 1px solid var(--border); }
+    .fiber-btn .jp { font-family: var(--font-jp); font-size: 0.85rem; }
+    .fiber-btn:hover { color: var(--text); }
+    .fiber-btn.active { color: var(--text); font-weight: 600; }
+    .fiber-btn.active .jp { color: var(--accent); }
+
+    /* Process: sparse vertical list */
+    .process { max-width: 640px; }
+    .step { padding: 26px 0; border-bottom: 1px solid var(--border); display: grid; grid-template-columns: 88px 1fr; gap: 20px; }
+    .step:first-child { border-top: 1px solid var(--border); }
+    .step .jp { font-family: var(--font-jp); font-size: 0.85rem; color: var(--text-muted); padding-top: 4px; }
+    .step h3 { font-family: var(--font-display); font-size: 1.2rem; font-weight: 600; margin-bottom: 6px; }
+    .step p { font-size: 0.9rem; color: var(--text-muted); }
+
+    /* Grades: open ledger rows */
+    .grade {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 8px 24px;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--border);
+      align-items: baseline;
+    }
+    .grade:first-of-type { border-top: 1px solid var(--border); }
+    .grade .name { font-family: var(--font-display); font-size: 1.3rem; font-weight: 600; }
+    .grade .name .jp { font-size: 0.85rem; color: var(--text-muted); font-weight: 400; margin-left: 10px; }
+    .grade .meta { color: var(--text-muted); font-size: 0.82rem; text-align: right; }
+    @media (max-width: 560px) { .grade { grid-template-columns: 1fr; } .grade .meta { text-align: left; } }
+
+    /* CTA: one quiet centered ask */
+    .cta { text-align: center; padding: clamp(80px, 12vw, 140px) 0; }
+    .cta .jp { font-family: var(--font-jp); font-size: 0.9rem; color: var(--text-muted); letter-spacing: 0.3em; margin-bottom: 18px; }
+    .cta h2 { font-family: var(--font-display); font-size: clamp(2rem, 4.5vw, 3.2rem); font-weight: 500; margin-bottom: 32px; }
+    .btn-quiet {
+      background: var(--text);
+      color: var(--bg);
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 14px 32px;
+      text-decoration: none;
+      min-height: 48px;
+      display: inline-flex;
+      align-items: center;
+      transition: opacity 0.15s ease, transform 0.15s ease;
+    }
+    .btn-quiet:hover { opacity: 0.85; transform: translateY(-1px); }
+
+    /* Footer: single quiet line + links */
+    footer { border-top: 1px solid var(--border); padding: 40px 0 36px; font-size: 0.8rem; color: var(--text-muted); }
+    .footer-inner { display: flex; flex-wrap: wrap; gap: 12px 32px; justify-content: space-between; align-items: center; }
+    .footer-links { display: flex; flex-wrap: wrap; gap: 4px 18px; }
+    .footer-links a { color: var(--text-muted); text-decoration: none; min-height: 44px; display: inline-flex; align-items: center; }
+    .footer-links a:hover { color: var(--text); }
+
+    /* Specimens: paper photography on the same quiet measure */
+    .specimens { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 56px; }
+    @media (max-width: 720px) { .specimens { grid-template-columns: 1fr; } }
+    .specimens figure { margin: 0; }
+    .specimens img { width: 100%; height: auto; display: block; border: 1px solid var(--border); }
+    .specimens figcaption { font-size: 0.8rem; color: var(--text-muted); margin-top: 12px; line-height: 1.7; }
+    .specimens .jp-cap { font-family: var(--font-jp); font-size: 0.85rem; color: var(--text-muted); display: block; margin-bottom: 4px; }
+
+    /* Motion: staggered entrance reveals — transform + opacity only */
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.in { opacity: 1; transform: none; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+      *, ::before, ::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Barely-there nav -->
+  <header class="nav">
+    <div class="container nav-inner">
+      <a href="../index.html" class="brand">Kami Atelier <span class="jp">紙工房</span></a>
+      <nav class="nav-links" id="navMenu">
+        <a href="#fiber" class="nav-link">Fiber</a>
+        <a href="#process" class="nav-link">Process</a>
+        <a href="#grades" class="nav-link">Grades</a>
+        <a href="../index.html" class="nav-link">Hub</a>
+      </nav>
+      <button class="mobile-toggle" onclick="toggleMenu()" aria-label="Toggle navigation">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero: offset column, vertical JP annotation -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-inner">
+          <h1 class="hero-title">Paper made slowly.</h1>
+          <p class="hero-desc">
+            Handcrafted washi and quiet printed matter. A warm rice-paper canvas, restrained ink hierarchy, and the patience of hand-craft.
+          </p>
+          <a href="#fiber" class="hero-link">Study the fibers</a>
+        </div>
+        <div class="jp-vertical" aria-hidden="true">手漉き和紙 — 岐阜</div>
+      </div>
+    </section>
+
+    <!-- Fiber study: the live thing -->
+    <section class="section" id="fiber">
+      <div class="container">
+        <div class="section-kicker">素材 — FIBER STUDY</div>
+        <h2 class="section-title">Three fibers, three temperaments</h2>
+        <p class="section-desc">Select a fiber. The tonal field and its reading change together — quietly, without ceremony.</p>
+
+        <div class="fiber-study">
+          <div class="fiber-field" id="fiberField" style="background:#F1E9DD;">
+            <div class="kanji" id="fiberKanji">楮</div>
+          </div>
+          <div class="fiber-info">
+            <div class="name" id="fiberName">Kozo</div>
+            <div class="jp" id="fiberJp">楮 — paper mulberry</div>
+            <p id="fiberDesc">Long, strong fibers produce a resilient sheet with subtle sheen. The workhorse of traditional washi — used for prints, screens, and conservation repair.</p>
+            <div class="fiber-opts">
+              <button class="fiber-btn active" onclick="setFiber(this, 'kozo')"><span>Kozo — resilient, subtle sheen</span><span class="jp">楮</span></button>
+              <button class="fiber-btn" onclick="setFiber(this, 'mitsumata')"><span>Mitsumata — soft, ink-thirsty</span><span class="jp">三椏</span></button>
+              <button class="fiber-btn" onclick="setFiber(this, 'gampi')"><span>Gampi — lustrous, semi-translucent</span><span class="jp">雁皮</span></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Process -->
+    <section class="section" id="process">
+      <div class="container">
+        <div class="section-kicker">工程 — PROCESS</div>
+        <h2 class="section-title">Made by hand, dried by sun</h2>
+        <p class="section-desc">Every sheet passes through the same four rituals. Nothing is accelerated.</p>
+
+        <div class="process">
+          <div class="step">
+            <div class="jp">蒸す</div>
+            <div><h3>Steam and strip</h3><p>Branches are steamed, the bark stripped and bleached in cold river water — never chemically forced.</p></div>
+          </div>
+          <div class="step">
+            <div class="jp">叩く</div>
+            <div><h3>Beat the fiber</h3><p>Fibers are beaten by hand until they loosen, preserving the length that gives washi its strength.</p></div>
+          </div>
+          <div class="step">
+            <div class="jp">漉く</div>
+            <div><h3>Form the sheet</h3><p>The pulp is rocked on a bamboo su screen — front to back, side to side — until the sheet finds its even weight.</p></div>
+          </div>
+          <div class="step">
+            <div class="jp">干す</div>
+            <div><h3>Dry in the sun</h3><p>Sheets are brushed onto wooden boards and dried in open air. A winter's batch takes a full season.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Grades ledger -->
+    <section class="section" id="grades">
+      <div class="container">
+        <div class="section-kicker">等級 — GRADES</div>
+        <h2 class="section-title">Documented paper grades</h2>
+        <p class="section-desc">The workshop's current ledger. Weights and applications are measured, never estimated.</p>
+
+        <div class="grade">
+          <div class="name">Unryu <span class="jp">雲龍 — cloud dragon</span></div>
+          <div class="meta">28 g/m² — layered kozo strands<br>Lampshades, large-format prints</div>
+        </div>
+        <div class="grade">
+          <div class="name">Kitakata <span class="jp">喜多方</span></div>
+          <div class="meta">45 g/m² — gampi blend<br>Chiyogami, book covers</div>
+        </div>
+        <div class="grade">
+          <div class="name">Hosokawa <span class="jp">細川</span></div>
+          <div class="meta">60 g/m² — pure mitsumata<br>Conservation, calligraphy</div>
+        </div>
+
+        <div class="specimens">
+          <figure>
+            <span class="jp-cap">杉原紙</span>
+            <img src="../assets/washi-sugihara-paper.jpg" alt="Fanned sheets of Sugihara washi paper in pink, yellow, green, blue and undyed cream" loading="lazy" decoding="async">
+            <figcaption>Washi (Sugihara paper) — Tomomarusan, CC BY 2.5, via Wikimedia Commons.</figcaption>
+          </figure>
+          <figure>
+            <span class="jp-cap">白石和紙・亀甲透かし</span>
+            <img src="../assets/shiroishi-washi-hex-watermarked.jpg" alt="Shiroishi washi sheet held to the light revealing a hexagonal tortoiseshell watermark" loading="lazy" decoding="async">
+            <figcaption>Shiroishi washi, hex watermark — Mizu basyo, via Wikimedia Commons.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Quiet ask -->
+  <section class="cta">
+    <div class="container">
+      <div class="jp">お問い合わせ</div>
+      <h2>Commission a quiet surface.</h2>
+      <a href="../index.html" class="btn-quiet">Explore CraftSpec Hub</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container footer-inner">
+      <span>Kami Atelier — Wabi-Sabi Paper Edition — MIT License</span>
+      <div class="footer-links">
+        <a href="swiss.html">Swiss</a>
+        <a href="dark-tech.html">Dark Tech</a>
+        <a href="luxury.html">Luxury</a>
+        <a href="brutalist.html">Brutalist</a>
+        <a href="cyber.html">Cyber</a>
+      </div>
+      <span>Built with @makeskills/craftspec</span>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('navMenu').classList.toggle('open');
+    }
+
+    const fibers = {
+      kozo:      { name: 'Kozo',      jp: '楮 — paper mulberry',  kanji: '楮', tone: '#F1E9DD',
+                   desc: 'Long, strong fibers produce a resilient sheet with subtle sheen. The workhorse of traditional washi — used for prints, screens, and conservation repair.' },
+      mitsumata: { name: 'Mitsumata', jp: '三椏 — oriental paperbush', kanji: '三', tone: '#EDE4D4',
+                   desc: 'Shorter fibers yield a soft, ink-thirsty surface that holds a brush line with gentle feathering. Favoured for calligraphy and fine printing.' },
+      gampi:     { name: 'Gampi',     jp: '雁皮 — daphne shrub',   kanji: '雁', tone: '#F5EFE4',
+                   desc: 'Cannot be cultivated — gathered wild. Produces a lustrous, semi-translucent sheet prized for chancery documents and maki-e grounds.' },
+    };
+
+    function setFiber(el, key) {
+      const f = fibers[key];
+      if (!f) return;
+      document.querySelectorAll('.fiber-btn').forEach(b => b.classList.remove('active'));
+      el.classList.add('active');
+      document.getElementById('fiberField').style.background = f.tone;
+      document.getElementById('fiberKanji').textContent = f.kanji;
+      document.getElementById('fiberName').textContent = f.name;
+      document.getElementById('fiberJp').textContent = f.jp;
+      document.getElementById('fiberDesc').textContent = f.desc;
+    }
+
+    /* Staggered entrance reveals — opacity + transform only */
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.section-kicker, .section-title, .section-desc, .fiber-study, .step, .grade, .specimens figure, .cta .container > *')
+      .forEach((el, i) => { el.classList.add('reveal'); el.style.transitionDelay = (i % 4) * 80 + 'ms'; io.observe(el); });
+  </script>
+</body>
+</html>

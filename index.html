@@ -3,147 +3,227 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CraftSpec - Universal AI Design System & Prompt Optimizer</title>
-  <meta name="description" content="Eliminate AI slop. Transform vague design requirements into agency-grade prompts, design tokens, and rigorous UI specs with The Floor defense.">
+  <title>CraftSpec — Universal AI Design System & Prompt Optimizer</title>
+  <meta name="description" content="Eliminate AI slop. Transform vague design prompts into agency-grade design tokens, signature moments, and clean code with The Floor defense.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
-    /* Hallmark Stamp: craftspec-hub | Strict Floor Compliant */
+    /* hallmark: craftspec-hub | v1.0.0 | genre: modern-minimal | shape: workbench */
+    /* critique: zero-slop pure token architecture with live unslop workbench */
+
     :root {
-      --bg: #090A0C;
+      --canvas: #090A0C;
       --surface: #111317;
-      --surface-elevated: #181B20;
+      --surface-elevated: #171A1F;
       --border: #23272F;
-      --border-subtle: #1C2026;
+      --border-subtle: #1A1E24;
       --text: #F3F4F6;
       --text-muted: #8B949E;
       --text-faint: #4E5561;
-      --accent: #10B981;
-      --accent-glow: rgba(16, 185, 129, 0.15);
-      --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --signal: #10B981;
+      --signal-surface: rgba(16, 185, 129, 0.1);
+      --signal-border: rgba(16, 185, 129, 0.25);
+      --font-display: 'Plus Jakarta Sans', -apple-system, sans-serif;
+      --font-body: 'Plus Jakarta Sans', -apple-system, sans-serif;
       --font-mono: 'JetBrains Mono', ui-monospace, monospace;
-      --radius: 12px;
-      --radius-sm: 8px;
+      --radius: 8px;
+      --radius-pill: 999px;
+      --gutter: 24px;
+      --max-width: 1200px;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
     html, body {
-      background-color: var(--bg);
+      background-color: var(--canvas);
       color: var(--text);
-      font-family: var(--font-sans);
+      font-family: var(--font-body);
       overflow-x: clip;
       -webkit-font-smoothing: antialiased;
       line-height: 1.5;
     }
 
-    a { color: inherit; text-decoration: none; }
-    button { font-family: inherit; cursor: pointer; border: none; background: none; }
-    :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
-    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    button {
+      font-family: inherit;
+      cursor: pointer;
+      border: none;
+      background: none;
+    }
 
-    /* Top Navigation */
+    :focus-visible {
+      outline: 2px solid var(--signal);
+      outline-offset: 2px;
+    }
+
+    /* Container: capped and centred at 1200px, gutters grow at 1920px (Rule 14) */
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 var(--gutter);
+    }
+
+    /* Top Chrome Nav (Untracked labels, sentence case, Rule 9) */
     .nav {
       position: sticky;
       top: 0;
       z-index: 100;
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      background: rgba(9, 10, 12, 0.85);
+      background: rgba(9, 10, 12, 0.94);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border-subtle);
       height: 64px;
       display: flex;
       align-items: center;
     }
-    .nav-inner { display: flex; justify-content: space-between; align-items: center; width: 100%; }
-    .logo { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 1.15rem; letter-spacing: -0.02em; }
-    .logo-badge {
-      font-size: 0.7rem;
-      font-weight: 600;
-      background: var(--surface-elevated);
-      color: var(--accent);
-      border: 1px solid var(--border);
-      padding: 2px 8px;
-      border-radius: 999px;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
+
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
     }
-    .nav-links { display: flex; align-items: center; gap: 20px; font-size: 0.9rem; color: var(--text-muted); }
-    .nav-links a:hover { color: var(--text); }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      font-size: 1.15rem;
+      letter-spacing: -0.02em;
+    }
+
+    .logo-version {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--signal);
+      background: var(--signal-surface);
+      border: 1px solid var(--signal-border);
+      padding: 2px 7px;
+      border-radius: var(--radius);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nav-link {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      padding: 8px 14px;
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      border-radius: var(--radius);
+    }
+
+    .nav-link:hover {
+      color: var(--text);
+    }
+
     .btn-github {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 8px 14px;
+      padding: 8px 16px;
       background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: 999px;
+      border-radius: var(--radius);
       font-size: 0.85rem;
       font-weight: 600;
       min-height: 44px;
-      transition: transform 0.15s ease, border-color 0.15s ease;
+      transition: transform 0.15s ease, opacity 0.15s ease;
     }
-    .btn-github:hover { border-color: var(--text-muted); transform: translateY(-1px); }
 
-    /* Hero Section */
-    .hero { padding: 80px 0 60px; text-align: center; }
-    .pill-announcement {
+    .btn-github:hover {
+      transform: translateY(-1px);
+      opacity: 0.95;
+    }
+
+    /* Hero Section (Fulfills 1280x800 golden rule: Headline <= 7 words, one sentence, action visible without scroll) */
+    .hero {
+      padding: clamp(48px, 6vw, 72px) 0 48px;
+      text-align: center;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .hero-thesis-tag {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      padding: 6px 14px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 999px;
-      font-size: 0.8rem;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
       color: var(--text-muted);
-      margin-bottom: 24px;
+      margin-bottom: 16px;
+      gap: 8px;
     }
-    .pill-announcement span { color: var(--accent); font-weight: 700; }
-    .hero h1 {
-      font-size: clamp(2.5rem, 5.5vw, 4.4rem);
+
+    .hero-thesis-tag code {
+      color: var(--signal);
+      background: var(--surface);
+      padding: 2px 6px;
+      border-radius: 4px;
+      border: 1px solid var(--border-subtle);
+    }
+
+    .hero-headline {
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 5.5vw, 4.2rem);
       font-weight: 800;
       letter-spacing: -0.04em;
-      line-height: 1.08;
-      margin-bottom: 20px;
-      max-width: 950px;
+      line-height: 1.05;
+      margin-bottom: 18px;
+      max-width: 900px;
       margin-left: auto;
       margin-right: auto;
+      overflow-wrap: break-word;
+      min-width: 0;
     }
-    .hero h1 span {
-      background: linear-gradient(135deg, #FFF 30%, #9CA3AF 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    .hero-desc {
-      font-size: clamp(1rem, 2vw, 1.25rem);
+
+    .hero-sentence {
+      font-size: clamp(1rem, 1.8vw, 1.2rem);
       color: var(--text-muted);
-      max-width: 720px;
-      margin: 0 auto 36px;
+      max-width: 640px;
+      margin: 0 auto 32px;
       line-height: 1.6;
     }
 
-    /* Install CLI Box */
-    .install-box {
+    /* Install Strip (Centered action, zero purple gradients) */
+    .install-bar {
       display: inline-flex;
       align-items: center;
       background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: 999px;
-      padding: 6px 8px 6px 20px;
-      margin: 0 auto 48px;
-      max-width: 100%;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      border-radius: var(--radius);
+      padding: 6px 6px 6px 18px;
+      margin-bottom: 16px;
     }
-    .install-cmd {
+
+    .install-command {
       font-family: var(--font-mono);
-      font-size: 0.95rem;
-      color: #E5E7EB;
+      font-size: 0.9rem;
+      color: var(--text);
       user-select: all;
     }
-    .install-cmd .prefix { color: var(--accent); margin-right: 8px; user-select: none; }
-    .btn-copy {
+
+    .install-command .token-sig {
+      color: var(--signal);
+      margin-right: 8px;
+      user-select: none;
+    }
+
+    .btn-install-copy {
       display: inline-flex;
       align-items: center;
       gap: 6px;
@@ -152,31 +232,240 @@
       background: var(--surface-elevated);
       color: var(--text);
       border: 1px solid var(--border);
-      border-radius: 999px;
+      border-radius: var(--radius);
       font-size: 0.8rem;
       font-weight: 600;
       min-height: 44px;
-      transition: background 0.15s ease, transform 0.1s ease;
+      transition: transform 0.1s ease, opacity 0.1s ease;
     }
-    .btn-copy:hover { background: #252A33; transform: scale(1.02); }
-    .btn-copy:active { transform: scale(0.98); }
 
-    /* Theme Showcase Gallery */
-    .showcase-gallery {
-      padding: 40px 0 80px;
-      border-top: 1px solid var(--border-subtle);
+    .btn-install-copy:hover {
+      transform: translateY(-1px);
     }
-    .section-head { text-align: center; margin-bottom: 40px; }
-    .section-head h2 { font-size: 2.1rem; font-weight: 800; letter-spacing: -0.03em; margin-bottom: 10px; }
-    .section-head p { color: var(--text-muted); font-size: 1rem; }
 
-    .theme-grid {
+    .btn-install-copy:active {
+      transform: translateY(1px);
+    }
+
+    /* Workbench Shape (No card inside card, clean hairline architecture) */
+    .workbench-section {
+      padding: 56px 0 80px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .section-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+      text-transform: lowercase;
+    }
+
+    .section-title {
+      font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 12px;
+    }
+
+    .section-desc {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      max-width: 620px;
+      margin-bottom: 36px;
+    }
+
+    .workbench-layout {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      grid-template-columns: 5fr 7fr;
+      gap: 24px;
+    }
+
+    @media (max-width: 900px) {
+      .workbench-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Left Workbench: Direct Input & Controls */
+    .controls-pane {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .pane-label {
+      font-size: 0.8rem;
+      font-family: var(--font-mono);
+      color: var(--text-muted);
+    }
+
+    .query-input {
+      width: 100%;
+      padding: 14px 16px;
+      background: var(--canvas);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      color: var(--text);
+      font-size: 0.95rem;
+      font-family: inherit;
+      outline: none;
+      transition: opacity 0.15s ease;
+    }
+
+    .query-input:focus {
+      border-color: var(--signal);
+    }
+
+    .archetype-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .btn-archetype {
+      padding: 8px 14px;
+      background: var(--surface-elevated);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      font-weight: 600;
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      transition: transform 0.1s ease;
+    }
+
+    .btn-archetype.active {
+      background: var(--text);
+      color: var(--canvas);
+      border-color: var(--text);
+    }
+
+    .btn-shuffle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 16px;
+      background: var(--surface-elevated);
+      color: var(--signal);
+      border: 1px solid var(--signal-border);
+      border-radius: var(--radius);
+      font-size: 0.82rem;
+      font-weight: 700;
+      min-height: 44px;
+      transition: transform 0.1s ease;
+    }
+
+    .btn-shuffle:hover {
+      transform: translateY(-1px);
+    }
+
+    /* Live Surface Monitor */
+    .surface-monitor {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      background: var(--canvas);
+    }
+
+    .monitor-heading {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .monitor-sub {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    .monitor-btn {
+      display: inline-flex;
+      align-items: center;
+      padding: 8px 16px;
+      border-radius: var(--radius);
+      font-size: 0.8rem;
+      font-weight: 700;
+      min-height: 44px;
+    }
+
+    /* Right Workbench: Token Stream & Generated Brief */
+    .output-pane {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .output-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--border-subtle);
+      padding-bottom: 14px;
+    }
+
+    .harness-selector {
+      display: flex;
+      gap: 6px;
+    }
+
+    .harness-tab {
+      padding: 6px 12px;
+      border-radius: var(--radius);
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      border: 1px solid transparent;
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .harness-tab.active {
+      color: var(--text);
+      background: var(--surface-elevated);
+      border-color: var(--border);
+    }
+
+    .brief-editor {
+      background: var(--canvas);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px;
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      color: #CBD5E1;
+      white-space: pre-wrap;
+      overflow-y: auto;
+      max-height: 420px;
+      line-height: 1.6;
+    }
+
+    /* Standalone Theme Showcase Gallery (Rule 11: Direct hairline cards) */
+    .gallery-section {
+      padding: 64px 0 80px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .showcase-matrix {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 20px;
       margin-top: 32px;
     }
-    .theme-card {
+
+    .showcase-cell {
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius);
@@ -184,181 +473,158 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      transition: transform 0.15s ease, border-color 0.15s ease;
-    }
-    .theme-card:hover {
-      transform: translateY(-3px);
-      border-color: var(--text-muted);
-    }
-    .theme-card-top { margin-bottom: 24px; }
-    .theme-tag {
-      font-size: 0.75rem;
-      font-weight: 700;
-      font-family: var(--font-mono);
-      color: var(--accent);
-      margin-bottom: 10px;
-      display: inline-block;
-    }
-    .theme-card h3 { font-size: 1.3rem; font-weight: 800; margin-bottom: 8px; letter-spacing: -0.02em; }
-    .theme-card p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; }
-    .theme-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 0.85rem;
-      font-weight: 700;
-      color: #FFF;
-      padding-top: 14px;
-      border-top: 1px solid var(--border-subtle);
-      min-height: 44px;
-    }
-    .theme-link:hover { color: var(--accent); }
-
-    /* Playground Section */
-    .playground-section { padding: 40px 0 100px; }
-    .playground-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 32px;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
-    }
-    .input-bar-group { display: flex; flex-direction: column; gap: 16px; margin-bottom: 28px; }
-    .search-input-wrapper { position: relative; display: flex; align-items: center; }
-    .search-input {
-      width: 100%;
-      padding: 16px 20px 16px 48px;
-      background: var(--surface-elevated);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      color: #FFF;
-      font-size: 1.05rem;
-      font-family: inherit;
-      outline: none;
-      transition: border-color 0.2s ease;
-    }
-    .search-input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-glow); }
-    .search-icon { position: absolute; left: 18px; color: var(--text-muted); pointer-events: none; }
-    .preset-tags { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
-    .preset-label { font-size: 0.8rem; color: var(--text-faint); margin-right: 4px; }
-    .tag-btn {
-      padding: 6px 14px;
-      background: var(--surface-elevated);
-      border: 1px solid var(--border-subtle);
-      border-radius: 999px;
-      color: var(--text-muted);
-      font-size: 0.8rem;
-      min-height: 44px;
-      display: inline-flex;
-      align-items: center;
-      transition: all 0.15s ease;
-    }
-    .tag-btn:hover { color: var(--text); border-color: var(--border); background: #20242B; }
-
-    /* Controls Bar */
-    .controls-bar {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: center;
-      gap: 16px;
-      padding-bottom: 24px;
-      border-bottom: 1px solid var(--border-subtle);
-      margin-bottom: 28px;
-    }
-    .style-selector { display: flex; flex-wrap: wrap; gap: 8px; }
-    .style-pill {
-      padding: 8px 16px;
-      background: var(--surface-elevated);
-      border: 1px solid var(--border);
-      border-radius: 999px;
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      font-weight: 600;
-      min-height: 44px;
-      display: inline-flex;
-      align-items: center;
-      transition: all 0.15s ease;
-    }
-    .style-pill.active { background: var(--text); color: var(--bg); border-color: var(--text); }
-    .btn-shuffle {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 18px;
-      background: var(--accent);
-      color: #06281E;
-      font-size: 0.85rem;
-      font-weight: 700;
-      border-radius: 999px;
-      min-height: 44px;
-      transition: transform 0.15s ease, filter 0.15s ease;
-    }
-    .btn-shuffle:hover { filter: brightness(1.1); transform: scale(1.02); }
-
-    /* Playground Split Output */
-    .playground-split { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
-    @media (max-width: 900px) { .playground-split { grid-template-columns: 1fr; } }
-
-    .spec-column { display: flex; flex-direction: column; gap: 20px; }
-    .panel-block { background: var(--surface-elevated); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; }
-    .panel-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
-    .panel-title { font-size: 0.85rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; }
-
-    .token-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 12px; }
-    .token-item { display: flex; align-items: center; gap: 10px; background: var(--surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 8px 12px; }
-    .color-swatch { width: 20px; height: 20px; border-radius: 6px; border: 1px solid rgba(255, 255, 255, 0.2); }
-    .token-name { font-size: 0.75rem; color: var(--text-muted); }
-    .token-val { font-family: var(--font-mono); font-size: 0.8rem; color: var(--text); font-weight: 600; }
-
-    /* Live Preview Card */
-    .live-preview-card { border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; transition: all 0.3s ease; }
-    .live-preview-card .lp-tag { display: inline-block; font-size: 0.75rem; font-weight: 700; padding: 4px 10px; border-radius: 999px; margin-bottom: 14px; text-transform: uppercase; }
-    .live-preview-card h3 { font-size: 1.4rem; font-weight: 800; margin-bottom: 8px; }
-    .live-preview-card p { font-size: 0.9rem; margin-bottom: 20px; opacity: 0.8; }
-    .live-preview-card .lp-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 10px 20px;
-      border-radius: 999px;
-      font-size: 0.85rem;
-      font-weight: 700;
-      min-height: 44px;
+      min-height: 220px;
       transition: transform 0.15s ease;
     }
-    .live-preview-card .lp-btn:hover { transform: translateY(-2px); }
 
-    /* Prompt Box */
-    .prompt-box { background: #060708; border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; height: 100%; display: flex; flex-direction: column; }
-    .prompt-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid var(--border-subtle); }
-    .target-tabs { display: flex; gap: 6px; }
-    .target-tab { padding: 6px 12px; font-size: 0.8rem; border-radius: 6px; color: var(--text-muted); min-height: 44px; display: inline-flex; align-items: center; }
-    .target-tab.active { color: #FFF; background: var(--surface-elevated); border: 1px solid var(--border); }
-    .prompt-content { font-family: var(--font-mono); font-size: 0.82rem; color: #A6ACCD; white-space: pre-wrap; overflow-y: auto; max-height: 480px; line-height: 1.6; flex-grow: 1; }
+    .showcase-cell:hover {
+      transform: translateY(-2px);
+    }
 
-    /* The Floor Section */
-    .floor-section { padding: 60px 0 100px; border-top: 1px solid var(--border-subtle); }
-    .comparison-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 40px; }
-    @media (max-width: 768px) { .comparison-grid { grid-template-columns: 1fr; } }
-    .bad-card { background: rgba(239, 68, 68, 0.03); border: 1px solid rgba(239, 68, 68, 0.2); border-radius: var(--radius); padding: 28px; }
-    .good-card { background: rgba(16, 185, 129, 0.03); border: 1px solid rgba(16, 185, 129, 0.2); border-radius: var(--radius); padding: 28px; }
-    .comparison-badge { display: inline-block; font-size: 0.75rem; font-weight: 700; padding: 4px 10px; border-radius: 999px; margin-bottom: 16px; }
-    .bad-badge { background: rgba(239, 68, 68, 0.2); color: #F87171; }
-    .good-badge { background: rgba(16, 185, 129, 0.2); color: #34D399; }
-    .check-list { list-style: none; display: flex; flex-direction: column; gap: 14px; font-size: 0.95rem; }
-    .check-list li { display: flex; align-items: flex-start; gap: 10px; }
-    .check-list li svg { flex-shrink: 0; margin-top: 3px; }
+    .cell-number {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--signal);
+      margin-bottom: 10px;
+    }
 
-    /* Platforms Grid */
-    .platforms-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin-top: 40px; }
-    .platform-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; text-align: center; font-weight: 700; font-size: 0.95rem; color: var(--text); }
-    .platform-card span { display: block; font-size: 0.8rem; color: var(--text-muted); font-weight: 400; margin-top: 4px; }
+    .showcase-cell h3 {
+      font-size: 1.25rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+      letter-spacing: -0.02em;
+    }
 
-    footer { padding: 60px 0; border-top: 1px solid var(--border-subtle); text-align: center; color: var(--text-muted); font-size: 0.85rem; }
+    .showcase-cell p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
 
-    /* Toast */
-    .toast {
+    .cell-action {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text);
+      min-height: 44px;
+      border-top: 1px solid var(--border-subtle);
+      padding-top: 12px;
+    }
+
+    .cell-action:hover {
+      color: var(--signal);
+    }
+
+    /* The Floor Section (Hard invariants) */
+    .floor-section {
+      padding: 64px 0 80px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .floor-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 32px;
+    }
+
+    @media (max-width: 768px) {
+      .floor-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .floor-pane {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      background: var(--surface);
+    }
+
+    .pane-tag-bad {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #F87171;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .pane-tag-good {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #34D399;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .rule-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      font-size: 0.9rem;
+    }
+
+    .rule-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      line-height: 1.5;
+    }
+
+    /* Cross-IDE Support Grid */
+    .platforms-section {
+      padding: 64px 0 80px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .harness-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-top: 32px;
+    }
+
+    .harness-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    .harness-item span {
+      display: block;
+      font-size: 0.75rem;
+      font-family: var(--font-mono);
+      color: var(--text-muted);
+      font-weight: 400;
+      margin-top: 6px;
+    }
+
+    /* Footer (Untracked labels, zero middle-dot meta strings, Rule 10) */
+    footer {
+      padding: 56px 0 40px;
+      color: var(--text-muted);
+      font-size: 0.82rem;
+      text-align: center;
+    }
+
+    .footer-commands {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      margin-top: 12px;
+      color: var(--text-faint);
+    }
+
+    /* Toast Notification */
+    .toast-box {
       position: fixed;
       bottom: 24px;
       right: 24px;
@@ -366,20 +632,29 @@
       color: #FFF;
       border: 1px solid var(--border);
       padding: 12px 20px;
-      border-radius: 999px;
+      border-radius: var(--radius);
       font-size: 0.85rem;
       font-weight: 600;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
       opacity: 0;
-      transform: translateY(10px);
-      transition: all 0.2s ease;
+      transform: translateY(8px);
+      transition: opacity 0.15s ease, transform 0.15s ease;
       pointer-events: none;
       z-index: 1000;
     }
-    .toast.show { opacity: 1; transform: translateY(0); }
+
+    .toast-box.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Rule 7: prefers-reduced-motion fallback */
+    @media (prefers-reduced-motion: reduce) {
+      *, ::before, ::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
   </style>
 </head>
 <body>
@@ -389,15 +664,15 @@
     <div class="container nav-inner">
       <div class="logo">
         <span>CraftSpec</span>
-        <span class="logo-badge">v1.0.0</span>
+        <span class="logo-version">v1.0.0</span>
       </div>
       <nav class="nav-links">
-        <a href="#showcase">Theme Demos</a>
-        <a href="#playground">Interactive Engine</a>
-        <a href="#floor">The Floor Rules</a>
-        <a href="#platforms">Supported IDEs</a>
+        <a href="#workbench" class="nav-link">Workbench</a>
+        <a href="#gallery" class="nav-link">Showcases</a>
+        <a href="#floor" class="nav-link">The Floor</a>
+        <a href="#harnesses" class="nav-link">Harnesses</a>
         <a href="https://github.com/makeskills/craftspec" target="_blank" class="btn-github">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
             <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
           </svg>
           GitHub
@@ -406,326 +681,256 @@
     </div>
   </header>
 
-  <!-- Hero Section -->
+  <!-- Hero Section (Strictly respects 1280x800: Title <= 7 words, thesis, primary action visible without scroll) -->
   <section class="hero">
     <div class="container">
-      <div class="pill-announcement">
-        <span>NEW</span> Cross-IDE Support: Devin, Cursor, Claude Code, Windsurf & Copilot
+      <div class="hero-thesis-tag">
+        <span>the floor defense</span>
+        <code>@makeskills/craftspec</code>
       </div>
-      <h1>Eliminate AI Slop.<br><span>Generate Real Design Systems.</span></h1>
-      <p class="hero-desc">
-        CraftSpec enforces "The Floor" defense constraints and "Ask Once" decision gating, transforming ambiguous prompts into agency-grade design tokens, signature moments, and clean code.
+      <h1 class="hero-headline">Eliminate AI slop. Construct real systems.</h1>
+      <p class="hero-sentence">
+        CraftSpec binds generative coding assistants to strict architectural invariants, replacing default AI templates with declared tokens and signature moments.
       </p>
 
-      <!-- Install CLI Command Box -->
-      <div class="install-box">
-        <div class="install-cmd">
-          <span class="prefix">$</span>npm i @makeskills/craftspec
+      <!-- Primary Action: Install Command Bar -->
+      <div class="install-bar">
+        <div class="install-command">
+          <span class="token-sig">$</span>npm i @makeskills/craftspec
         </div>
-        <button class="btn-copy" onclick="copyText('npm i @makeskills/craftspec')">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <button class="btn-install-copy" onclick="copySnippet('npm i @makeskills/craftspec')">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
             <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
           </svg>
-          Copy
+          copy command
         </button>
       </div>
     </div>
   </section>
 
-  <!-- Theme Showcase Gallery (Independent Theme Pages) -->
-  <section class="showcase-gallery" id="showcase">
+  <!-- Section 01: Interactive Workbench (Shape: Workbench, Rule 11 clean layout) -->
+  <section class="workbench-section" id="workbench">
     <div class="container">
-      <div class="section-head">
-        <h2>Live Theme Archetype Showcases</h2>
-        <p>Explore standalone rendered pages constructed strictly under CraftSpec & The Floor invariants.</p>
-      </div>
+      <div class="section-eyebrow">interactive shape — workbench</div>
+      <h2 class="section-title">Design system deconstruction engine</h2>
+      <p class="section-desc">Test how CraftSpec enforces tokens and decomposes unstructured prompts into executable briefs.</p>
 
-      <div class="theme-grid">
-        <!-- 01 Swiss Editorial -->
-        <div class="theme-card">
-          <div class="theme-card-top">
-            <span class="theme-tag">ARCHETYPE 01</span>
-            <h3>Swiss Editorial</h3>
-            <p>Stark black/white contrast, heavy typography ratio, clean hairline dividers, ruthless negative space.</p>
+      <div class="workbench-layout">
+        <!-- Left: Controls & Surface -->
+        <div class="controls-pane">
+          <div>
+            <div class="pane-label" style="margin-bottom:8px;">requirement brief</div>
+            <input type="text" id="userInput" class="query-input" value="SaaS Telemetry and Security Console" placeholder="e.g. Minimalist Watch Store, Quiet Luxury Studio...">
           </div>
-          <a href="examples/swiss.html" class="theme-link">
-            <span>Explore Swiss Page</span>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <line x1="5" y1="12" x2="19" y2="12"></line>
-              <polyline points="12 5 19 12 12 19"></polyline>
-            </svg>
-          </a>
-        </div>
 
-        <!-- 02 Tactical Dark Tech -->
-        <div class="theme-card">
-          <div class="theme-card-top">
-            <span class="theme-tag">ARCHETYPE 02</span>
-            <h3>Tactical Dark Tech</h3>
-            <p>OLED charcoal canvas (#0B0D0F), monospace display typography, emerald signal telemetry, zero AI glow.</p>
+          <div>
+            <div class="pane-label" style="margin-bottom:8px;">dealt archetype</div>
+            <div class="archetype-row" id="archetypeRow">
+              <button class="btn-archetype active" data-style="swiss" onclick="pickStyle('swiss')">swiss editorial</button>
+              <button class="btn-archetype" data-style="darkTech" onclick="pickStyle('darkTech')">tactical dark</button>
+              <button class="btn-archetype" data-style="luxury" onclick="pickStyle('luxury')">quiet luxury</button>
+              <button class="btn-archetype" data-style="brutalist" onclick="pickStyle('brutalist')">brutalist</button>
+              <button class="btn-archetype" data-style="cyber" onclick="pickStyle('cyber')">cyber blueprint</button>
+              <button class="btn-archetype" data-style="wabi" onclick="pickStyle('wabi')">wabi-sabi paper</button>
+            </div>
           </div>
-          <a href="examples/dark-tech.html" class="theme-link">
-            <span>Explore Dark Tech Page</span>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <line x1="5" y1="12" x2="19" y2="12"></line>
-              <polyline points="12 5 19 12 12 19"></polyline>
-            </svg>
-          </a>
-        </div>
 
-        <!-- 03 Quiet Luxury -->
-        <div class="theme-card">
-          <div class="theme-card-top">
-            <span class="theme-tag">ARCHETYPE 03</span>
-            <h3>Quiet Luxury</h3>
-            <p>Warm cream foundations (#FDFBF7), Cormorant serif majesty, subtle amber accents, generous breathing room.</p>
-          </div>
-          <a href="examples/luxury.html" class="theme-link">
-            <span>Explore Luxury Page</span>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <line x1="5" y1="12" x2="19" y2="12"></line>
-              <polyline points="12 5 19 12 12 19"></polyline>
-            </svg>
-          </a>
-        </div>
-
-        <!-- 04 Industrial Brutalist -->
-        <div class="theme-card">
-          <div class="theme-card-top">
-            <span class="theme-tag">ARCHETYPE 04</span>
-            <h3>Industrial Brutalist</h3>
-            <p>Tactile raw gray (#E5E5E5), mechanical 2px solid black borders, industrial alert orange, structural integrity.</p>
-          </div>
-          <a href="examples/brutalist.html" class="theme-link">
-            <span>Explore Brutalist Page</span>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <line x1="5" y1="12" x2="19" y2="12"></line>
-              <polyline points="12 5 19 12 12 19"></polyline>
-            </svg>
-          </a>
-        </div>
-
-        <!-- 05 Cyber Blueprint -->
-        <div class="theme-card">
-          <div class="theme-card-top">
-            <span class="theme-tag">ARCHETYPE 05</span>
-            <h3>Cyber Blueprint</h3>
-            <p>Deep cyber midnight (#080E18), geometric grid framing, cyan status feedback for deep tech systems.</p>
-          </div>
-          <a href="examples/cyber.html" class="theme-link">
-            <span>Explore Cyber Page</span>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <line x1="5" y1="12" x2="19" y2="12"></line>
-              <polyline points="12 5 19 12 12 19"></polyline>
-            </svg>
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Interactive Live Playground Section -->
-  <section class="playground-section" id="playground">
-    <div class="container">
-      <div class="section-head">
-        <h2>Interactive Prompt & Token Engine</h2>
-        <p>Type a raw requirement below to test CraftSpec's live six-dimensional deconstruction.</p>
-      </div>
-
-      <div class="playground-card">
-        <!-- Input Group -->
-        <div class="input-bar-group">
-          <div class="search-input-wrapper">
-            <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="11" cy="11" r="8"></circle>
-              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-            </svg>
-            <input type="text" id="designInput" class="search-input" value="SaaS Telemetry & Security Dashboard" placeholder="Type a concept: e.g. Minimalist Watch Store, Quiet Luxury Jewelry...">
-          </div>
-          <div class="preset-tags">
-            <span class="preset-label">Quick Presets:</span>
-            <button class="tag-btn" onclick="applyPreset('Tactical Watch Storefront', 'darkTech')">⌚ Tactical Watch</button>
-            <button class="tag-btn" onclick="applyPreset('Heritage Luxury Jewelry', 'luxury')">💎 Quiet Luxury</button>
-            <button class="tag-btn" onclick="applyPreset('Swiss Minimalist Platform', 'swiss')">🇨🇭 Swiss SaaS</button>
-            <button class="tag-btn" onclick="applyPreset('Wabi-Sabi Lifestyle Journal', 'wabiSabi')">🍵 Wabi-Sabi</button>
-            <button class="tag-btn" onclick="applyPreset('Industrial Hardware Monitor', 'brutalist')">⚙️ Industrial</button>
-          </div>
-        </div>
-
-        <!-- Controls Bar -->
-        <div class="controls-bar">
-          <div class="style-selector" id="styleSelector">
-            <button class="style-pill active" data-style="swiss" onclick="selectStyle('swiss')">Swiss Editorial</button>
-            <button class="style-pill" data-style="darkTech" onclick="selectStyle('darkTech')">Tactical Dark</button>
-            <button class="style-pill" data-style="luxury" onclick="selectStyle('luxury')">Quiet Luxury</button>
-            <button class="style-pill" data-style="wabiSabi" onclick="selectStyle('wabiSabi')">Wabi-Sabi Paper</button>
-            <button class="style-pill" data-style="brutalist" onclick="selectStyle('brutalist')">Brutalist</button>
-          </div>
           <button class="btn-shuffle" onclick="shuffleStyle()">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <polyline points="16 3 21 3 21 8"></polyline>
               <line x1="4" y1="20" x2="21" y2="3"></line>
               <polyline points="21 16 21 21 16 21"></polyline>
               <line x1="15" y1="15" x2="21" y2="21"></line>
               <line x1="4" y1="4" x2="9" y2="9"></line>
             </svg>
-            🎲 Shuffle Archetype
+            shuffle dealt direction
           </button>
-        </div>
 
-        <!-- Playground Output Split -->
-        <div class="playground-split">
-          <!-- Left: Tokens & Live Visual Card -->
-          <div class="spec-column">
-            <div class="panel-block">
-              <div class="panel-head">
-                <span class="panel-title">Live Dynamic Surface Preview</span>
-              </div>
-              <div class="live-preview-card" id="liveCard">
-                <span class="lp-tag" id="lpTag">Swiss Editorial</span>
-                <h3 id="lpTitle">Precision Architectural Surface</h3>
-                <p id="lpDesc">Built upon rigorous grids, calculated whitespace, and zero artificial ornamentation.</p>
-                <button class="lp-btn" id="lpBtn">
-                  <span>Explore Specs</span>
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                    <polyline points="12 5 19 12 12 19"></polyline>
-                  </svg>
-                </button>
-              </div>
-            </div>
-
-            <div class="panel-block">
-              <div class="panel-head">
-                <span class="panel-title">Declared Design Tokens</span>
-              </div>
-              <div class="token-grid" id="tokenGrid"></div>
-            </div>
-          </div>
-
-          <!-- Right: Code Output -->
-          <div class="prompt-box">
-            <div class="prompt-header">
-              <div class="target-tabs">
-                <button class="target-tab active" onclick="setTarget('devin')">Cursor / Devin</button>
-                <button class="target-tab" onclick="setTarget('v0')">v0 / Bolt</button>
-                <button class="target-tab" onclick="setTarget('claude')">Claude Artifacts</button>
-              </div>
-              <button class="btn-copy" onclick="copyPrompt()">
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                </svg>
-                Copy Prompt
-              </button>
-            </div>
-            <div class="prompt-content" id="promptOutput"></div>
+          <!-- Live Surface Preview -->
+          <div class="surface-monitor" id="surfaceCard">
+            <div style="font-family:var(--font-mono); font-size:0.75rem; margin-bottom:8px;" id="monitorTag">archetype: swiss</div>
+            <h3 class="monitor-heading" id="monitorTitle">Precision Telemetry Surface</h3>
+            <p class="monitor-sub" id="monitorDesc">Rigorous asymmetric grid, zero purple gradients, 44px min touch anchors.</p>
+            <button class="monitor-btn" id="monitorBtn">inspect tokens</button>
           </div>
         </div>
 
+        <!-- Right: Code Output -->
+        <div class="output-pane">
+          <div class="output-header">
+            <div class="harness-selector">
+              <button class="harness-tab active" onclick="switchHarness('devin')">Cursor / Devin</button>
+              <button class="harness-tab" onclick="switchHarness('v0')">v0 / Bolt</button>
+              <button class="harness-tab" onclick="switchHarness('claude')">Claude Code</button>
+            </div>
+            <button class="btn-install-copy" onclick="copyBrief()">
+              copy brief
+            </button>
+          </div>
+          <div class="brief-editor" id="briefOutput"></div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- The Floor Rules Section -->
+  <!-- Section 02: Standalone Theme Showcase Gallery -->
+  <section class="gallery-section" id="gallery">
+    <div class="container">
+      <div class="section-eyebrow">production archetypes</div>
+      <h2 class="section-title">Standalone responsive showcases</h2>
+      <p class="section-desc">Independent production landing pages adhering to The Floor invariants.</p>
+
+      <div class="showcase-matrix">
+        <!-- 01 Swiss Editorial -->
+        <div class="showcase-cell">
+          <div>
+            <div class="cell-number">01 / swiss editorial</div>
+            <h3>Aura Chronometry</h3>
+            <p>High-contrast typographic platform. Calibre 4100 escapement configurator, 12-column grid, crimson signal.</p>
+          </div>
+          <a href="examples/swiss.html" class="cell-action">
+            <span>open swiss page</span>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </a>
+        </div>
+
+        <!-- 02 Tactical Dark Tech -->
+        <div class="showcase-cell">
+          <div>
+            <div class="cell-number">02 / tactical dark</div>
+            <h3>Krypton Telemetry</h3>
+            <p>OLED charcoal base (#0B0D0F). Interactive live kernel stream, monospace data density, zero AI glow.</p>
+          </div>
+          <a href="examples/dark-tech.html" class="cell-action">
+            <span>open dark tech page</span>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </a>
+        </div>
+
+        <!-- 03 Quiet Luxury -->
+        <div class="showcase-cell">
+          <div>
+            <div class="cell-number">03 / quiet luxury</div>
+            <h3>Maison Verre</h3>
+            <p>Warm cream foundation (#FDFBF7), Cormorant serif majesty, tactile spatial palette selector, amber accent.</p>
+          </div>
+          <a href="examples/luxury.html" class="cell-action">
+            <span>open luxury page</span>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </a>
+        </div>
+
+        <!-- 04 Industrial Brutalist -->
+        <div class="showcase-cell">
+          <div>
+            <div class="cell-number">04 / industrial brutalist</div>
+            <h3>Forge Dynamics</h3>
+            <p>Rigid 2px solid black architectural framing, mechanical Space Mono, tactile hydraulic load simulator.</p>
+          </div>
+          <a href="examples/brutalist.html" class="cell-action">
+            <span>open brutalist page</span>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </a>
+        </div>
+
+        <!-- 05 Cyber Blueprint -->
+        <div class="showcase-cell">
+          <div>
+            <div class="cell-number">05 / cyber blueprint</div>
+            <h3>Axiom Blueprint</h3>
+            <p>Midnight cyber navy (#080E18), interactive SVG node topology, cyan status feedback for deep tech systems.</p>
+          </div>
+          <a href="examples/cyber.html" class="cell-action">
+            <span>open cyber page</span>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </a>
+        </div>
+
+        <!-- 06 Wabi-Sabi Paper -->
+        <div class="showcase-cell">
+          <div>
+            <div class="cell-number">06 / wabi-sabi paper</div>
+            <h3>Kami Atelier</h3>
+            <p>Warm rice-paper canvas (#F4EFEA), Shippori Mincho serif, vertical Japanese annotation, handcrafted restraint.</p>
+          </div>
+          <a href="examples/wabi-sabi.html" class="cell-action">
+            <span>open wabi-sabi page</span>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 03: The Floor Invariants -->
   <section class="floor-section" id="floor">
     <div class="container">
-      <div class="section-head">
-        <h2>"The Floor" Defense Invariants</h2>
-        <p>Hard boundaries against average defaults. Non-waivable across every harness.</p>
-      </div>
+      <div class="section-eyebrow">invariants matrix</div>
+      <h2 class="section-title">The Floor defense rules</h2>
+      <p class="section-desc">Binds every model output across every harness. Non-waivable defaults.</p>
 
-      <div class="comparison-grid">
-        <div class="bad-card">
-          <span class="comparison-badge bad-badge">❌ Typical AI Slop Defaults</span>
-          <ul class="check-list">
-            <li>
-              <svg width="18" height="18" fill="none" stroke="#EF4444" stroke-width="2" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-              <span>Purple-to-blue gradients (`bg-gradient-to-r from-purple-500`)</span>
-            </li>
-            <li>
-              <svg width="18" height="18" fill="none" stroke="#EF4444" stroke-width="2" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-              <span>`transition: all` animating layout dimensions (width, height, top, left)</span>
-            </li>
-            <li>
-              <svg width="18" height="18" fill="none" stroke="#EF4444" stroke-width="2" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-              <span>Cards inside cards with hollow information density</span>
-            </li>
-            <li>
-              <svg width="18" height="18" fill="none" stroke="#EF4444" stroke-width="2" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-              <span>Invented metrics, fake testimonials, or placeholder logo walls</span>
-            </li>
-            <li>
-              <svg width="18" height="18" fill="none" stroke="#EF4444" stroke-width="2" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-              <span>Broken mobile viewports with horizontal scroll leaks & tiny touch targets</span>
-            </li>
+      <div class="floor-grid">
+        <div class="floor-pane">
+          <span class="pane-tag-bad">banned AI defaults (slop)</span>
+          <ul class="rule-list">
+            <li><span>Never purple-to-blue gradients or diffuse glow borders</span></li>
+            <li><span>Never transition: all or animating width, height, top, or left</span></li>
+            <li><span>Never cards inside cards or hollow information containers</span></li>
+            <li><span>Never invented metrics, fake reviews, or placeholder logos</span></li>
+            <li><span>Never viewport drift or touch targets under 44px</span></li>
           </ul>
         </div>
 
-        <div class="good-card">
-          <span class="comparison-badge good-badge">✔ CraftSpec Invariants</span>
-          <ul class="check-list">
-            <li>
-              <svg width="18" height="18" fill="none" stroke="#10B981" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              <span>Single semantic accent signal + domain-specific palette tokens</span>
-            </li>
-            <li>
-              <svg width="18" height="18" fill="none" stroke="#10B981" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              <span>Strictly transform & opacity motion; prefers-reduced-motion fallback</span>
-            </li>
-            <li>
-              <svg width="18" height="18" fill="none" stroke="#10B981" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              <span>Negative whitespace hierarchy + designated Signature Moment</span>
-            </li>
-            <li>
-              <svg width="18" height="18" fill="none" stroke="#10B981" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              <span>Absolute factual honesty: missing facts become clean structural slots</span>
-            </li>
-            <li>
-              <svg width="18" height="18" fill="none" stroke="#10B981" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              <span>All touch targets &gt;= 44×44px; clamp() responsive typography</span>
-            </li>
+        <div class="floor-pane">
+          <span class="pane-tag-good">enforced invariants</span>
+          <ul class="rule-list">
+            <li><span>All colors and typography declared at :root tokens</span></li>
+            <li><span>Motion strictly transform and opacity with reduced motion fallback</span></li>
+            <li><span>Real negative space hierarchy with a distinct signature moment</span></li>
+            <li><span>Missing facts preserved as clean, honest structural slots</span></li>
+            <li><span>Touch targets strictly &gt;= 44×44px with clamp() responsive scales</span></li>
           </ul>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Platforms Grid -->
-  <section class="container" style="padding-bottom: 80px;" id="platforms">
-    <div class="section-head">
-      <h2>Native Across All AI Coding Environments</h2>
-      <p>One universal package, immediately operational in your editor.</p>
-    </div>
-    <div class="platforms-grid">
-      <div class="platform-card">Devin CLI / Desktop<span>.devin-plugin / SKILL.md</span></div>
-      <div class="platform-card">Cursor IDE<span>.cursor/rules / .cursorrules</span></div>
-      <div class="platform-card">Windsurf / Codeium<span>.windsurfrules / AGENTS.md</span></div>
-      <div class="platform-card">Claude Code<span>.claude-plugin / CLAUDE.md</span></div>
-      <div class="platform-card">GitHub Copilot<span>.github/copilot-instructions.md</span></div>
+  <!-- Section 04: Harness Grid -->
+  <section class="platforms-section" id="harnesses">
+    <div class="container">
+      <div class="section-eyebrow">universal integration</div>
+      <h2 class="section-title">Operational across all AI environments</h2>
+
+      <div class="harness-grid">
+        <div class="harness-item">Devin CLI / Desktop<span>.devin-plugin / SKILL.md</span></div>
+        <div class="harness-item">Cursor IDE<span>.cursor/rules / .cursorrules</span></div>
+        <div class="harness-item">Windsurf / Codeium<span>.windsurfrules / AGENTS.md</span></div>
+        <div class="harness-item">Claude Code<span>.claude-plugin / CLAUDE.md</span></div>
+        <div class="harness-item">GitHub Copilot<span>.github/copilot-instructions.md</span></div>
+      </div>
     </div>
   </section>
 
-  <!-- Footer -->
+  <!-- Footer (Clean metadata without middle dots or arrows) -->
   <footer>
     <div class="container">
-      <p>CraftSpec · Released under the MIT License.</p>
-      <p style="margin-top: 8px;">Install: <code>npm i @makeskills/craftspec</code> · Quickstart: <code>npx @makeskills/craftspec init</code></p>
+      <div>CraftSpec — MIT License</div>
+      <div class="footer-commands">
+        <span>npm i @makeskills/craftspec</span> | <span>npx @makeskills/craftspec init</span>
+      </div>
     </div>
   </footer>
 
   <!-- Toast -->
-  <div class="toast" id="toast">
-    <svg width="16" height="16" fill="none" stroke="#10B981" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
-    <span id="toastMsg">Copied to clipboard!</span>
+  <div class="toast-box" id="toast">
+    <span id="toastMsg">copied to clipboard</span>
   </div>
 
   <script>
     const archetypes = {
       swiss: {
         name: 'Swiss Editorial',
-        tag: 'Swiss Editorial',
         title: 'Modern Typographic Platform',
         desc: 'High-contrast typography with mass, 12-column asymmetric grid, zero purple gradients.',
         bg: '#F8FAFC',
@@ -734,11 +939,10 @@
         muted: '#64748B',
         border: '#E2E8F0',
         accent: '#E11D48',
-        typography: 'Display: Inter (800) / Body: Inter'
+        fonts: 'Display: Inter (800) / Body: Inter'
       },
       darkTech: {
         name: 'Tactical Dark Tech',
-        tag: 'Tactical Dark',
         title: 'Telemetry & Console Interface',
         desc: 'OLED charcoal base, monospace data density, status emerald beacons.',
         bg: '#0B0D0F',
@@ -747,11 +951,10 @@
         muted: '#9CA3AF',
         border: '#242B35',
         accent: '#10B981',
-        typography: 'Display: JetBrains Mono / Body: Inter'
+        fonts: 'Display: JetBrains Mono / Body: Inter'
       },
       luxury: {
         name: 'Quiet Luxury',
-        tag: 'Quiet Luxury',
         title: 'Heritage Editorial Showcase',
         desc: 'Warm cream foundations, Cormorant serif majesty, delicate amber highlights.',
         bg: '#FDFBF7',
@@ -760,24 +963,10 @@
         muted: '#78716C',
         border: '#E7E5E4',
         accent: '#B45309',
-        typography: 'Display: Cormorant Garamond / Body: Jakarta'
-      },
-      wabiSabi: {
-        name: 'Wabi-Sabi Paper',
-        tag: 'Wabi-Sabi',
-        title: 'Artisanal Paper & Craft',
-        desc: 'Warm textured paper background, serene editorial typesetting, organic restraint.',
-        bg: '#F4EFEA',
-        surface: '#FAF7F2',
-        text: '#2C2A29',
-        muted: '#7D7571',
-        border: '#D6CCC2',
-        accent: '#4A5568',
-        typography: 'Display: Shippori Mincho / Body: Noto Sans'
+        fonts: 'Display: Cormorant Garamond / Body: Jakarta'
       },
       brutalist: {
         name: 'Industrial Brutalist',
-        tag: 'Industrial',
         title: 'Mechanical Blueprint Terminal',
         desc: '2px solid black architectural framing, alert orange, raw tactile weight.',
         bg: '#E5E5E5',
@@ -786,126 +975,118 @@
         muted: '#525252',
         border: '#000000',
         accent: '#FF5500',
-        typography: 'Display: Space Mono / Body: Chivo'
+        fonts: 'Display: Space Mono / Body: Chivo'
+      },
+      cyber: {
+        name: 'Cyber Blueprint',
+        title: 'Deep Tech Geometric Framework',
+        desc: 'Midnight navy canvas, precision grid framing, cyan telemetry signals.',
+        bg: '#080E18',
+        surface: '#0E1726',
+        text: '#F1F5F9',
+        muted: '#94A3B8',
+        border: '#1E293B',
+        accent: '#06B6D4',
+        fonts: 'Display: Chakra Petch / Body: Fira Code'
+      },
+      wabi: {
+        name: 'Wabi-Sabi Paper',
+        title: 'Humanist Paper Surface',
+        desc: 'Warm rice-paper foundation, quiet ink hierarchy, handcrafted restraint.',
+        bg: '#F4EFEA',
+        surface: '#FFFFFF',
+        text: '#1C1917',
+        muted: '#78716C',
+        border: '#D6CCC2',
+        accent: '#4A5568',
+        fonts: 'Display: Shippori Mincho / Body: Noto Sans'
       }
     };
 
-    let currentStyleKey = 'swiss';
-    let currentTarget = 'devin';
+    let activeStyle = 'swiss';
+    let activeHarness = 'devin';
 
-    function selectStyle(key) {
-      currentStyleKey = key;
-      document.querySelectorAll('.style-pill').forEach(btn => {
-        btn.classList.toggle('active', btn.dataset.style === key);
+    function pickStyle(key) {
+      activeStyle = key;
+      document.querySelectorAll('.btn-archetype').forEach(b => {
+        b.classList.toggle('active', b.dataset.style === key);
       });
-      render();
+      renderWorkbench();
     }
 
     function shuffleStyle() {
       const keys = Object.keys(archetypes);
-      const filtered = keys.filter(k => k !== currentStyleKey);
-      const randomKey = filtered[Math.floor(Math.random() * filtered.length)];
-      selectStyle(randomKey);
-      showToast('🎲 Archetype shuffled!');
+      const filtered = keys.filter(k => k !== activeStyle);
+      const random = filtered[Math.floor(Math.random() * filtered.length)];
+      pickStyle(random);
+      showToast('archetype shuffled');
     }
 
-    function applyPreset(query, styleKey) {
-      document.getElementById('designInput').value = query;
-      selectStyle(styleKey);
-    }
-
-    function setTarget(target) {
-      currentTarget = target;
-      document.querySelectorAll('.target-tab').forEach((tab, index) => {
-        const targets = ['devin', 'v0', 'claude'];
-        tab.classList.toggle('active', targets[index] === target);
+    function switchHarness(h) {
+      activeHarness = h;
+      document.querySelectorAll('.harness-tab').forEach((tab, index) => {
+        const order = ['devin', 'v0', 'claude'];
+        tab.classList.toggle('active', order[index] === h);
       });
-      renderPrompt();
+      renderPromptOnly();
     }
 
-    function render() {
-      const style = archetypes[currentStyleKey];
-      const query = document.getElementById('designInput').value || 'Modern Frontend Architecture';
+    function renderWorkbench() {
+      const a = archetypes[activeStyle];
+      const q = document.getElementById('userInput').value || 'Production System Interface';
 
-      const card = document.getElementById('liveCard');
-      card.style.backgroundColor = style.bg;
-      card.style.color = style.text;
-      card.style.borderColor = style.border;
+      const monitor = document.getElementById('surfaceCard');
+      monitor.style.backgroundColor = a.bg;
+      monitor.style.color = a.text;
+      monitor.style.borderColor = a.border;
 
-      const tag = document.getElementById('lpTag');
-      tag.textContent = style.tag;
-      tag.style.backgroundColor = style.surface;
-      tag.style.color = style.accent;
-      tag.style.border = `1px solid ${style.border}`;
+      document.getElementById('monitorTag').textContent = 'archetype: ' + a.name.toLowerCase();
+      document.getElementById('monitorTag').style.color = a.accent;
+      document.getElementById('monitorTitle').textContent = q;
+      document.getElementById('monitorDesc').textContent = a.desc;
 
-      document.getElementById('lpTitle').textContent = query;
-      document.getElementById('lpDesc').textContent = style.desc;
+      const btn = document.getElementById('monitorBtn');
+      btn.style.backgroundColor = a.accent;
+      btn.style.color = a.bg === '#0B0D0F' || a.bg === '#080E18' ? '#000' : '#FFF';
 
-      const btn = document.getElementById('lpBtn');
-      btn.style.backgroundColor = style.accent;
-      btn.style.color = style.bg === '#0B0D0F' ? '#000' : '#FFF';
-
-      const tokenGrid = document.getElementById('tokenGrid');
-      tokenGrid.innerHTML = `
-        <div class="token-item">
-          <div class="color-swatch" style="background: ${style.bg}"></div>
-          <div><div class="token-name">Background</div><div class="token-val">${style.bg}</div></div>
-        </div>
-        <div class="token-item">
-          <div class="color-swatch" style="background: ${style.surface}"></div>
-          <div><div class="token-name">Surface</div><div class="token-val">${style.surface}</div></div>
-        </div>
-        <div class="token-item">
-          <div class="color-swatch" style="background: ${style.text}"></div>
-          <div><div class="token-name">Primary Text</div><div class="token-val">${style.text}</div></div>
-        </div>
-        <div class="token-item">
-          <div class="color-swatch" style="background: ${style.accent}"></div>
-          <div><div class="token-name">Accent</div><div class="token-val">${style.accent}</div></div>
-        </div>
-        <div class="token-item" style="grid-column: 1 / -1;">
-          <div><div class="token-name">Typography</div><div class="token-val" style="font-size:0.75rem;">${style.typography}</div></div>
-        </div>
-      `;
-
-      renderPrompt();
+      renderPromptOnly();
     }
 
-    function renderPrompt() {
-      const style = archetypes[currentStyleKey];
-      const query = document.getElementById('designInput').value || 'Modern Frontend Architecture';
+    function renderPromptOnly() {
+      const a = archetypes[activeStyle];
+      const q = document.getElementById('userInput').value || 'Production System Interface';
 
-      let prompt = '';
-      if (currentTarget === 'v0') {
-        prompt = `// Target: v0 / Bolt Zero-Config Renderer
-Build a pixel-perfect standalone screen for "${query}".
-- Style: ${style.name} (${style.desc})
-- Tokens: bg: "${style.bg}", surface: "${style.surface}", text: "${style.text}", accent: "${style.accent}", border: "${style.border}"
-- Fonts: ${style.typography}
-- Invariants: No transition:all. No cards inside cards. Touch targets >= 44px. No fake metrics. Complete hover & focus-visible states.`;
-      } else if (currentTarget === 'claude') {
-        prompt = `// Target: Claude Artifacts Single-File Component
-Generate a self-contained interactive React component for "${query}":
-- Archetype: ${style.name}
-- Palette: Background ${style.bg}, Surface ${style.surface}, Accent ${style.accent}
+      let output = '';
+      if (activeHarness === 'v0') {
+        output = `// Target: v0 / Bolt Zero-Config Renderer
+Build a pixel-perfect standalone screen for "${q}".
+- Archetype: ${a.name} (${a.desc})
+- Tokens: bg: "${a.bg}", surface: "${a.surface}", text: "${a.text}", accent: "${a.accent}", border: "${a.border}"
+- Fonts: ${a.fonts}
+- Invariants: Never transition:all. No cards inside cards. Touch targets >= 44px. No fake metrics. Complete hover & focus-visible states.`;
+      } else if (activeHarness === 'claude') {
+        output = `// Target: Claude Artifacts Single-File Component
+Generate a self-contained interactive React component for "${q}":
+- Archetype: ${a.name}
+- Palette: Background ${a.bg}, Surface ${a.surface}, Accent ${a.accent}
 - The Floor: Only animate transform & opacity. Lucide icons only (no emojis).
 - Include functional tabs, simulated state changes, and skeleton loading screens.`;
       } else {
-        prompt = `\`\`\`markdown
+        output = `\`\`\`markdown
 # Production UI Implementation Brief
 
 ## Objective
-Design and implement an agency-grade interface for "${query}" strictly adhering to CraftSpec & The Floor invariants.
+Design and implement an agency-grade interface for "${q}" strictly adhering to CraftSpec & The Floor invariants.
 
 ## Design System Tokens
-- Archetype: ${style.name}
-- Background: \`${style.bg}\`
-- Surface: \`${style.surface}\`
-- Text Primary: \`${style.text}\`
-- Text Secondary: \`${style.muted}\`
-- Border: \`${style.border}\` (1px subtle hairline)
-- Accent: \`${style.accent}\`
-- Typography: ${style.typography}
+- Archetype: ${a.name}
+- Background: \`${a.bg}\`
+- Surface: \`${a.surface}\`
+- Text Primary: \`${a.text}\`
+- Text Secondary: \`${a.muted}\`
+- Border: \`${a.border}\` (1px subtle hairline)
+- Accent: \`${a.accent}\`
+- Typography: ${a.fonts}
 
 ## The Floor Invariants
 - Zero purple-to-blue gradients, cards inside cards, or emoji icons.
@@ -916,36 +1097,34 @@ Design and implement an agency-grade interface for "${query}" strictly adhering 
 \`\`\``;
       }
 
-      document.getElementById('promptOutput').textContent = prompt;
+      document.getElementById('briefOutput').textContent = output;
     }
 
-    document.getElementById('designInput').addEventListener('input', () => {
-      render();
-    });
+    document.getElementById('userInput').addEventListener('input', renderWorkbench);
 
-    function copyText(text) {
+    function copySnippet(text) {
       navigator.clipboard.writeText(text).then(() => {
-        showToast('Copied: ' + text);
+        showToast('command copied');
       });
     }
 
-    function copyPrompt() {
-      const content = document.getElementById('promptOutput').textContent;
-      navigator.clipboard.writeText(content).then(() => {
-        showToast('Prompt copied to clipboard!');
+    function copyBrief() {
+      const text = document.getElementById('briefOutput').textContent;
+      navigator.clipboard.writeText(text).then(() => {
+        showToast('brief copied to clipboard');
       });
     }
 
     function showToast(msg) {
-      const toast = document.getElementById('toast');
+      const t = document.getElementById('toast');
       document.getElementById('toastMsg').textContent = msg;
-      toast.classList.add('show');
+      t.classList.add('show');
       setTimeout(() => {
-        toast.classList.remove('show');
+        t.classList.remove('show');
       }, 2000);
     }
 
-    render();
+    renderWorkbench();
   </script>
 </body>
 </html>
