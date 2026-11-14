@@ -1,0 +1,1179 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CraftSpec - 頂級 AI 設計需求架構師與規格最佳化引擎</title>
+  <meta name="description" content="告別 AI 廉價模板感。透過 The Floor 硬性防禦與 Ask Once 決策提問，將模糊設計需求重構為極致專業的 AI 實作提示詞。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #090A0C;
+      --surface: #111317;
+      --surface-elevated: #181B20;
+      --border: #23272F;
+      --border-subtle: #1C2026;
+      --text: #F3F4F6;
+      --text-muted: #8B949E;
+      --text-faint: #4E5561;
+      --accent: #10B981;
+      --accent-glow: rgba(16, 185, 129, 0.15);
+      --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+      --radius: 12px;
+      --radius-sm: 8px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: var(--font-sans);
+      overflow-x: clip;
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.5;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font-family: inherit;
+      cursor: pointer;
+      border: none;
+      background: none;
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* 頂部導航 */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      background: rgba(9, 10, 12, 0.85);
+      border-bottom: 1px solid var(--border-subtle);
+      height: 64px;
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      font-size: 1.15rem;
+      letter-spacing: -0.02em;
+    }
+
+    .logo-badge {
+      font-size: 0.7rem;
+      font-weight: 600;
+      background: var(--surface-elevated);
+      color: var(--accent);
+      border: 1px solid var(--border);
+      padding: 2px 8px;
+      border-radius: 999px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .btn-github {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      transition: transform 0.15s ease, border-color 0.15s ease;
+    }
+
+    .btn-github:hover {
+      border-color: var(--text-muted);
+      transform: translateY(-1px);
+    }
+
+    /* Hero 區域 */
+    .hero {
+      padding: 80px 0 60px;
+      text-align: center;
+    }
+
+    .pill-announcement {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+    }
+
+    .pill-announcement span {
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.4rem, 5vw, 4.2rem);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1.1;
+      margin-bottom: 20px;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero h1 span {
+      background: linear-gradient(135deg, #FFF 30%, #9CA3AF 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-desc {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      color: var(--text-muted);
+      max-width: 680px;
+      margin: 0 auto 36px;
+      font-weight: 400;
+    }
+
+    /* 安裝指令列框 */
+    .install-box {
+      display: inline-flex;
+      align-items: center;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 6px 8px 6px 20px;
+      margin: 0 auto 48px;
+      max-width: 100%;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    .install-cmd {
+      font-family: var(--font-mono);
+      font-size: 0.95rem;
+      color: #E5E7EB;
+      user-select: all;
+    }
+
+    .install-cmd .prefix {
+      color: var(--accent);
+      margin-right: 8px;
+      user-select: none;
+    }
+
+    .btn-copy {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      margin-left: 16px;
+      background: var(--surface-elevated);
+      color: var(--text);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      transition: background 0.15s ease, transform 0.1s ease;
+    }
+
+    .btn-copy:hover {
+      background: #252A33;
+      transform: scale(1.02);
+    }
+
+    .btn-copy:active {
+      transform: scale(0.98);
+    }
+
+    /* 演式 Playground 區域 */
+    .playground-section {
+      padding: 40px 0 100px;
+    }
+
+    .section-head {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .section-head h2 {
+      font-size: 2rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 10px;
+    }
+
+    .section-head p {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .playground-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 32px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+    }
+
+    .input-bar-group {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    .search-input-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 16px 20px 16px 48px;
+      background: var(--surface-elevated);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      color: #FFF;
+      font-size: 1.05rem;
+      font-family: inherit;
+      outline: none;
+      transition: border-color 0.2s ease;
+    }
+
+    .search-input:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px var(--accent-glow);
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 18px;
+      color: var(--text-muted);
+      pointer-events: none;
+    }
+
+    .preset-tags {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .preset-label {
+      font-size: 0.8rem;
+      color: var(--text-faint);
+      margin-right: 4px;
+    }
+
+    .tag-btn {
+      padding: 5px 12px;
+      background: var(--surface-elevated);
+      border: 1px solid var(--border-subtle);
+      border-radius: 999px;
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      transition: all 0.15s ease;
+    }
+
+    .tag-btn:hover {
+      color: var(--text);
+      border-color: var(--border);
+      background: #20242B;
+    }
+
+    /* 樣式控制器與抽卡按鈕 */
+    .controls-bar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--border-subtle);
+      margin-bottom: 28px;
+    }
+
+    .style-selector {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .style-pill {
+      padding: 8px 16px;
+      background: var(--surface-elevated);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-weight: 600;
+      transition: all 0.15s ease;
+    }
+
+    .style-pill.active {
+      background: var(--text);
+      color: var(--bg);
+      border-color: var(--text);
+    }
+
+    .btn-shuffle {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 18px;
+      background: var(--accent);
+      color: #06281E;
+      font-size: 0.85rem;
+      font-weight: 700;
+      border-radius: 999px;
+      transition: transform 0.15s ease, filter 0.15s ease;
+    }
+
+    .btn-shuffle:hover {
+      filter: brightness(1.1);
+      transform: scale(1.02);
+    }
+
+    /* 演式兩欄輸出展示 */
+    .playground-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+    }
+
+    @media (max-width: 900px) {
+      .playground-split {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .spec-column {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .panel-block {
+      background: var(--surface-elevated);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+    }
+
+    .panel-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .panel-title {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .token-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 12px;
+    }
+
+    .token-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 8px 12px;
+    }
+
+    .color-swatch {
+      width: 20px;
+      height: 20px;
+      border-radius: 6px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .token-name {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .token-val {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    /* 實時動態 UI 模擬卡片 */
+    .live-preview-card {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      transition: all 0.3s ease;
+    }
+
+    .live-preview-card .lp-tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 999px;
+      margin-bottom: 14px;
+      text-transform: uppercase;
+    }
+
+    .live-preview-card h3 {
+      font-size: 1.4rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .live-preview-card p {
+      font-size: 0.9rem;
+      margin-bottom: 20px;
+      opacity: 0.8;
+    }
+
+    .live-preview-card .lp-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      transition: transform 0.15s ease;
+    }
+
+    .live-preview-card .lp-btn:hover {
+      transform: translateY(-2px);
+    }
+
+    /* 代碼 Prompt 預覽輸出 */
+    .prompt-box {
+      background: #060708;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .prompt-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .target-tabs {
+      display: flex;
+      gap: 6px;
+    }
+
+    .target-tab {
+      padding: 4px 10px;
+      font-size: 0.75rem;
+      border-radius: 6px;
+      color: var(--text-muted);
+      border: 1px solid transparent;
+    }
+
+    .target-tab.active {
+      color: #FFF;
+      background: var(--surface-elevated);
+      border-color: var(--border);
+    }
+
+    .prompt-content {
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      color: #A6ACCD;
+      white-space: pre-wrap;
+      overflow-y: auto;
+      max-height: 480px;
+      line-height: 1.6;
+      flex-grow: 1;
+    }
+
+    /* The Floor 對比矩陣 */
+    .floor-section {
+      padding: 60px 0 100px;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .comparison-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 40px;
+    }
+
+    @media (max-width: 768px) {
+      .comparison-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .bad-card {
+      background: rgba(239, 68, 68, 0.03);
+      border: 1px solid rgba(239, 68, 68, 0.2);
+      border-radius: var(--radius);
+      padding: 28px;
+    }
+
+    .good-card {
+      background: rgba(16, 185, 129, 0.03);
+      border: 1px solid rgba(16, 185, 129, 0.2);
+      border-radius: var(--radius);
+      padding: 28px;
+    }
+
+    .comparison-badge {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 999px;
+      margin-bottom: 16px;
+    }
+
+    .bad-badge {
+      background: rgba(239, 68, 68, 0.2);
+      color: #F87171;
+    }
+
+    .good-badge {
+      background: rgba(16, 185, 129, 0.2);
+      color: #34D399;
+    }
+
+    .check-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      font-size: 0.95rem;
+    }
+
+    .check-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .check-list li svg {
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+
+    /* 支援工具 Logo 欄 */
+    .platforms-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+      margin-top: 40px;
+    }
+
+    .platform-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      text-align: center;
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--text);
+    }
+
+    .platform-card span {
+      display: block;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-weight: 400;
+      margin-top: 4px;
+    }
+
+    /* Footer */
+    footer {
+      padding: 60px 0;
+      border-top: 1px solid var(--border-subtle);
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    /* Toast 提示 */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: var(--surface-elevated);
+      color: #FFF;
+      border: 1px solid var(--border);
+      padding: 12px 20px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      opacity: 0;
+      transform: translateY(10px);
+      transition: all 0.2s ease;
+      pointer-events: none;
+      z-index: 1000;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 頂部導航 -->
+  <header class="nav">
+    <div class="container nav-inner">
+      <div class="logo">
+        <span>CraftSpec</span>
+        <span class="logo-badge">v1.0.0</span>
+      </div>
+      <nav class="nav-links">
+        <a href="#playground">在線演示</a>
+        <a href="#floor">The Floor 底線</a>
+        <a href="#platforms">相容工具</a>
+        <a href="https://github.com/makeskills/craftspec" target="_blank" class="btn-github">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+          </svg>
+          GitHub
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero 區域 -->
+  <section class="hero">
+    <div class="container">
+      <div class="pill-announcement">
+        <span>NEW</span> 支援 Devin, Cursor, Claude Code, Windsurf & Copilot
+      </div>
+      <h1>告別 AI 廉價模板味。<br><span>重構頂級 UI/UX 設計規格。</span></h1>
+      <p class="hero-desc">
+        CraftSpec 透過「The Floor」硬性防線約束與「Ask Once」決策提問，將口語化模糊需求，轉化為具備極致工藝感、44px 觸控防禦與專屬記憶點的 AI 實作提示詞。
+      </p>
+
+      <!-- 安裝指令框 -->
+      <div class="install-box">
+        <div class="install-cmd">
+          <span class="prefix">$</span>npm i @makeskills/craftspec
+        </div>
+        <button class="btn-copy" onclick="copyText('npm i @makeskills/craftspec')">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+          </svg>
+          複製指令
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 演式互動 Playground -->
+  <section class="playground-section" id="playground">
+    <div class="container">
+      <div class="section-head">
+        <h2>即時規格架構與提示詞生成（演式體驗）</h2>
+        <p>在下方輸入任何模糊需求，或點選預設標籤，體驗 CraftSpec 的六維度解構能力。</p>
+      </div>
+
+      <div class="playground-card">
+        <!-- 搜尋與預設標籤 -->
+        <div class="input-bar-group">
+          <div class="search-input-wrapper">
+            <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input type="text" id="designInput" class="search-input" value="現代 SaaS 數據監控中心" placeholder="輸入您的設計需求，例如：暗黑極簡咖啡電商、靜謐奢華珠寶...">
+          </div>
+          <div class="preset-tags">
+            <span class="preset-label">快速體驗:</span>
+            <button class="tag-btn" onclick="applyPreset('暗黑戰術工程手錶官網', 'darkTech')">⌚ 暗黑手錶官網</button>
+            <button class="tag-btn" onclick="applyPreset('靜謐奢華精品珠寶首頁', 'luxury')">💎 靜謐奢華珠寶</button>
+            <button class="tag-btn" onclick="applyPreset('瑞士現代刊物風 SaaS 官網', 'swiss')">🇨🇭 瑞士極簡 SaaS</button>
+            <button class="tag-btn" onclick="applyPreset('日系手作茶道美學雜誌', 'wabiSabi')">🍵 日系紙感茶道</button>
+            <button class="tag-btn" onclick="applyPreset('工業硬核機械數據終端', 'brutalist')">⚙️ 工業粗獷終端</button>
+          </div>
+        </div>
+
+        <!-- 樣式流派切換器與抽卡 -->
+        <div class="controls-bar">
+          <div class="style-selector" id="styleSelector">
+            <button class="style-pill active" data-style="swiss" onclick="selectStyle('swiss')">瑞士極簡 (Swiss)</button>
+            <button class="style-pill" data-style="darkTech" onclick="selectStyle('darkTech')">暗黑戰術 (Dark Tech)</button>
+            <button class="style-pill" data-style="luxury" onclick="selectStyle('luxury')">靜謐奢華 (Luxury)</button>
+            <button class="style-pill" data-style="wabiSabi" onclick="selectStyle('wabiSabi')">日系紙感 (Wabi-Sabi)</button>
+            <button class="style-pill" data-style="brutalist" onclick="selectStyle('brutalist')">工業機能 (Brutalist)</button>
+          </div>
+          <button class="btn-shuffle" onclick="shuffleStyle()">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polyline points="16 3 21 3 21 8"></polyline>
+              <line x1="4" y1="20" x2="21" y2="3"></line>
+              <polyline points="21 16 21 21 16 21"></polyline>
+              <line x1="15" y1="15" x2="21" y2="21"></line>
+              <line x1="4" y1="4" x2="9" y2="9"></line>
+            </svg>
+            🎲 靈感隨機抽卡 (Shuffle)
+          </button>
+        </div>
+
+        <!-- 輸出分欄展示 -->
+        <div class="playground-split">
+          <!-- 左側：規格 Tokens 與 實時動態 UI 模擬 -->
+          <div class="spec-column">
+            <!-- 實時視覺預覽卡片 -->
+            <div class="panel-block">
+              <div class="panel-head">
+                <span class="panel-title">視覺風格即時模擬 (Live Preview)</span>
+              </div>
+              <div class="live-preview-card" id="liveCard">
+                <span class="lp-tag" id="lpTag">Swiss Editorial</span>
+                <h3 id="lpTitle">現代精準資訊架構</h3>
+                <p id="lpDesc">基於嚴謹排版網格與克制留白，徹底剔除多餘裝飾，讓核心業務內容躍然眼前。</p>
+                <button class="lp-btn" id="lpBtn">
+                  <span>立即探索規格</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            <!-- Tokens 清單 -->
+            <div class="panel-block">
+              <div class="panel-head">
+                <span class="panel-title">Design Tokens 速查表</span>
+              </div>
+              <div class="token-grid" id="tokenGrid">
+                <!-- 動態注入 -->
+              </div>
+            </div>
+          </div>
+
+          <!-- 右側：生成的 Prompt 輸出 -->
+          <div class="prompt-box">
+            <div class="prompt-header">
+              <div class="target-tabs">
+                <button class="target-tab active" onclick="setTarget('devin')">Cursor / Devin</button>
+                <button class="target-tab" onclick="setTarget('v0')">v0 / Bolt</button>
+                <button class="target-tab" onclick="setTarget('claude')">Claude Artifacts</button>
+              </div>
+              <button class="btn-copy" onclick="copyPrompt()">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                </svg>
+                複製 Prompt
+              </button>
+            </div>
+            <div class="prompt-content" id="promptOutput">
+              <!-- 動態生成代碼 -->
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- The Floor 底線對比 -->
+  <section class="floor-section" id="floor">
+    <div class="container">
+      <div class="section-head">
+        <h2>不可逾越的硬性防線（The Floor）</h2>
+        <p>徹底封鎖模型被餵養出的預設平均值，消除所有 AI 俗套。</p>
+      </div>
+
+      <div class="comparison-grid">
+        <div class="bad-card">
+          <span class="comparison-badge bad-badge">❌ 傳統 AI 模板套路 (Slop)</span>
+          <ul class="check-list">
+            <li>
+              <svg width="18" height="18" fill="none" stroke="#EF4444" stroke-width="2" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+              <span>濫用紫色到藍色漸變背景 (`from-purple-500 to-indigo-500`)</span>
+            </li>
+            <li>
+              <svg width="18" height="18" fill="none" stroke="#EF4444" stroke-width="2" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+              <span>無節制的發光邊框與過度模糊毛玻璃 (Glassmorphism)</span>
+            </li>
+            <li>
+              <svg width="18" height="18" fill="none" stroke="#EF4444" stroke-width="2" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+              <span>卡片裡面包卡片（Cards inside cards），缺乏真實資訊密度</span>
+            </li>
+            <li>
+              <svg width="18" height="18" fill="none" stroke="#EF4444" stroke-width="2" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+              <span>虛構「99.9% 客戶滿意度」或假的企業 Logo 牆</span>
+            </li>
+            <li>
+              <svg width="18" height="18" fill="none" stroke="#EF4444" stroke-width="2" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+              <span>手機端字體換行爆炸、按鈕難以點擊、橫向滾動溢出</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="good-card">
+          <span class="comparison-badge good-badge">✔ CraftSpec 頂級工藝防線</span>
+          <ul class="check-list">
+            <li>
+              <svg width="18" height="18" fill="none" stroke="#10B981" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>單一行為 Accent 色 + 具體行業語意色階，純粹沉穩</span>
+            </li>
+            <li>
+              <svg width="18" height="18" fill="none" stroke="#10B981" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>1px 微妙描邊（Hairline），動畫僅限 `transform` 與 `opacity`</span>
+            </li>
+            <li>
+              <svg width="18" height="18" fill="none" stroke="#10B981" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>純粹排版留白與線條分割，規劃每頁專屬記憶點（Signature）</span>
+            </li>
+            <li>
+              <svg width="18" height="18" fill="none" stroke="#10B981" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>無真實數據則留出客觀插槽，嚴禁 AI 憑空捏造評價</span>
+            </li>
+            <li>
+              <svg width="18" height="18" fill="none" stroke="#10B981" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>全觸控熱區 >= 44×44px，clamp() 響應式字級防爆</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 支援工具清單 -->
+  <section class="container" style="padding-bottom: 80px;" id="platforms">
+    <div class="section-head">
+      <h2>全主流 AI 編程生態開箱即用</h2>
+      <p>一個套件，無縫適配您所使用的所有開發工具。</p>
+    </div>
+    <div class="platforms-grid">
+      <div class="platform-card">Devin CLI / Desktop<span>.devin-plugin / SKILL.md</span></div>
+      <div class="platform-card">Cursor IDE<span>.cursor/rules / .cursorrules</span></div>
+      <div class="platform-card">Windsurf / Codeium<span>.windsurfrules / AGENTS.md</span></div>
+      <div class="platform-card">Claude Code<span>.claude-plugin / CLAUDE.md</span></div>
+      <div class="platform-card">GitHub Copilot<span>.github/copilot-instructions.md</span></div>
+    </div>
+  </section>
+
+  <!-- 底部版權 -->
+  <footer>
+    <div class="container">
+      <p>CraftSpec · Released under the MIT License.</p>
+      <p style="margin-top: 8px;">Install: <code>npm i @makeskills/craftspec</code> · Quickstart: <code>npx @makeskills/craftspec init</code></p>
+    </div>
+  </footer>
+
+  <!-- Toast -->
+  <div class="toast" id="toast">
+    <svg width="16" height="16" fill="none" stroke="#10B981" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+    <span id="toastMsg">已複製到剪貼簿！</span>
+  </div>
+
+  <script>
+    const archetypes = {
+      swiss: {
+        name: '瑞士極簡 (Swiss Editorial)',
+        tag: 'Swiss Editorial',
+        title: '瑞士現代極簡刊物',
+        desc: '黑白高反差、大膽字體比例、無襯線經典、高留白呼吸感。',
+        bg: '#F8FAFC',
+        surface: '#FFFFFF',
+        text: '#0F172A',
+        muted: '#64748B',
+        border: '#E2E8F0',
+        accent: '#E11D48',
+        typography: 'Display: Inter (800) / Body: Inter'
+      },
+      darkTech: {
+        name: '暗黑戰術 (Tactical Dark Tech)',
+        tag: 'Tactical Dark',
+        title: '暗黑戰術工程儀表',
+        desc: '冷炭黑底色、等寬字體、微光描邊、精準數據密度。',
+        bg: '#0B0D0F',
+        surface: '#14171A',
+        text: '#F3F4F6',
+        muted: '#9CA3AF',
+        border: '#242B35',
+        accent: '#10B981',
+        typography: 'Display: JetBrains Mono / Body: Inter'
+      },
+      luxury: {
+        name: '靜謐奢華 (Quiet Luxury)',
+        tag: 'Quiet Luxury',
+        title: '經典溫潤奢華刊物',
+        desc: '暖米灰底、優雅襯線 Display 字體、微光澤邊框、柔和呼吸感。',
+        bg: '#FDFBF7',
+        surface: '#FFFFFF',
+        text: '#1C1917',
+        muted: '#78716C',
+        border: '#E7E5E4',
+        accent: '#B45309',
+        typography: 'Display: Cormorant Garamond / Body: Jakarta'
+      },
+      wabiSabi: {
+        name: '日系紙感 (Wabi-Sabi Paper)',
+        tag: 'Wabi-Sabi',
+        title: '日系手作質樸紙感',
+        desc: '暖灰手作紙質感底色、沈穩排版、極致質樸克制。',
+        bg: '#F4EFEA',
+        surface: '#FAF7F2',
+        text: '#2C2A29',
+        muted: '#7D7571',
+        border: '#D6CCC2',
+        accent: '#4A5568',
+        typography: 'Display: Shippori Mincho / Body: Noto Sans'
+      },
+      brutalist: {
+        name: '工業機能 (Industrial Brutalist)',
+        tag: 'Industrial',
+        title: '硬核機械粗獷藍圖',
+        desc: '2px 粗黑邊框、單色高對比、機械刻度感、結構外露。',
+        bg: '#E5E5E5',
+        surface: '#FFFFFF',
+        text: '#000000',
+        muted: '#525252',
+        border: '#000000',
+        accent: '#FF5500',
+        typography: 'Display: Space Mono / Body: Chivo'
+      }
+    };
+
+    let currentStyleKey = 'swiss';
+    let currentTarget = 'devin';
+
+    function selectStyle(key) {
+      currentStyleKey = key;
+      document.querySelectorAll('.style-pill').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.style === key);
+      });
+      render();
+    }
+
+    function shuffleStyle() {
+      const keys = Object.keys(archetypes);
+      const filtered = keys.filter(k => k !== currentStyleKey);
+      const randomKey = filtered[Math.floor(Math.random() * filtered.length)];
+      selectStyle(randomKey);
+      showToast('🎲 已為您隨機切換風格！');
+    }
+
+    function applyPreset(query, styleKey) {
+      document.getElementById('designInput').value = query;
+      selectStyle(styleKey);
+    }
+
+    function setTarget(target) {
+      currentTarget = target;
+      document.querySelectorAll('.target-tab').forEach((tab, index) => {
+        const targets = ['devin', 'v0', 'claude'];
+        tab.classList.toggle('active', targets[index] === target);
+      });
+      renderPrompt();
+    }
+
+    function render() {
+      const style = archetypes[currentStyleKey];
+      const query = document.getElementById('designInput').value || '現代前端介面';
+
+      // 1. 渲染實時 UI 模擬卡片
+      const card = document.getElementById('liveCard');
+      card.style.backgroundColor = style.bg;
+      card.style.color = style.text;
+      card.style.borderColor = style.border;
+
+      const tag = document.getElementById('lpTag');
+      tag.textContent = style.tag;
+      tag.style.backgroundColor = style.surface;
+      tag.style.color = style.accent;
+      tag.style.border = `1px solid ${style.border}`;
+
+      document.getElementById('lpTitle').textContent = query;
+      document.getElementById('lpDesc').textContent = style.desc;
+
+      const btn = document.getElementById('lpBtn');
+      btn.style.backgroundColor = style.accent;
+      btn.style.color = style.bg === '#0B0D0F' ? '#000' : '#FFF';
+
+      // 2. 渲染 Tokens
+      const tokenGrid = document.getElementById('tokenGrid');
+      tokenGrid.innerHTML = `
+        <div class="token-item">
+          <div class="color-swatch" style="background: ${style.bg}"></div>
+          <div><div class="token-name">Background</div><div class="token-val">${style.bg}</div></div>
+        </div>
+        <div class="token-item">
+          <div class="color-swatch" style="background: ${style.surface}"></div>
+          <div><div class="token-name">Surface</div><div class="token-val">${style.surface}</div></div>
+        </div>
+        <div class="token-item">
+          <div class="color-swatch" style="background: ${style.text}"></div>
+          <div><div class="token-name">Primary Text</div><div class="token-val">${style.text}</div></div>
+        </div>
+        <div class="token-item">
+          <div class="color-swatch" style="background: ${style.accent}"></div>
+          <div><div class="token-name">Accent</div><div class="token-val">${style.accent}</div></div>
+        </div>
+        <div class="token-item" style="grid-column: 1 / -1;">
+          <div><div class="token-name">Typography</div><div class="token-val" style="font-size:0.75rem;">${style.typography}</div></div>
+        </div>
+      `;
+
+      // 3. 渲染 Prompt
+      renderPrompt();
+    }
+
+    function renderPrompt() {
+      const style = archetypes[currentStyleKey];
+      const query = document.getElementById('designInput').value || '現代前端介面';
+
+      let prompt = '';
+      if (currentTarget === 'v0') {
+        prompt = `// 專用提示詞：v0 / Bolt 即時渲染格式
+請為「${query}」實作一個像素級精緻的單頁介面。
+- 視覺風格: ${style.name}
+- 核心調性: ${style.desc}
+- 配色: bg: "${style.bg}", surface: "${style.surface}", text: "${style.text}", accent: "${style.accent}", border: "${style.border}"
+- 字體: ${style.typography}
+- 嚴格約束: 嚴禁紫色漸變、嚴禁卡片裡面包卡片、所有按鈕最小熱區 44x44px、嚴禁虛構假數據。全狀態覆蓋 hover 與 focus-visible。`;
+      } else if (currentTarget === 'claude') {
+        prompt = `// 專用提示詞：Claude Artifacts 互動組件格式
+請生成一個完整的 React 互動單組件以展示「${query}」：
+- 美學流派: ${style.name}
+- 設計色彩: Background ${style.bg}, Surface ${style.surface}, Accent ${style.accent}
+- The Floor 底線: 嚴禁 transition: all (僅限 transform/opacity)，嚴禁 Emoji 圖標（一律採用 Lucide SVG）。
+- 包含完整的狀態切換（Tabs, Hover 反饋與模擬加載骨架屏）。`;
+      } else {
+        prompt = `\`\`\`markdown
+# 專業前端介面設計與實作任務書
+
+## 任務目標
+請為「${query}」設計並實作一個現代、精緻且符合頂級工藝標準的前端介面。
+
+## 視覺規範 (Design Tokens)
+- 美學流派: ${style.name}
+- Background: \`${style.bg}\`
+- Surface: \`${style.surface}\`
+- Text Primary: \`${style.text}\`
+- Text Secondary: \`${style.muted}\`
+- Border: \`${style.border}\` (1px 實線細描邊)
+- Accent: \`${style.accent}\`
+- 字體搭配: ${style.typography}
+
+## 硬性約束 (The Floor)
+- 嚴禁紫色到藍色漸變、隨意外陰影、卡片包卡片與 Emoji 圖標。
+- 嚴禁 transition: all，動畫過渡僅限 transform 與 opacity。
+- 嚴禁虛構假數據或客戶評價。
+- 首屏標題、一句話主張與主 CTA 在 1280x800 解析度下無需滾動完整可見。
+- 行動端按鈕最小點擊熱區 44x44px，標題採用 clamp() 防多行折行。
+\`\`\``;
+      }
+
+      document.getElementById('promptOutput').textContent = prompt;
+    }
+
+    document.getElementById('designInput').addEventListener('input', () => {
+      render();
+    });
+
+    function copyText(text) {
+      navigator.clipboard.writeText(text).then(() => {
+        showToast('已複製: ' + text);
+      });
+    }
+
+    function copyPrompt() {
+      const content = document.getElementById('promptOutput').textContent;
+      navigator.clipboard.writeText(content).then(() => {
+        showToast('已複製 AI 實作任務書！');
+      });
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      document.getElementById('toastMsg').textContent = msg;
+      toast.classList.add('show');
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 2000);
+    }
+
+    // 初始化渲染
+    render();
+  </script>
+</body>
+</html>
