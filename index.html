@@ -634,30 +634,79 @@
       border-bottom: 1px solid var(--border-subtle);
     }
 
-    .harness-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr));
-      gap: 16px;
+    .harness-ledger {
       margin-top: 32px;
-    }
-
-    .harness-item {
-      background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: 20px;
-      font-weight: 700;
-      font-size: 1rem;
+      overflow: hidden;
     }
 
-    .harness-item span {
+    .h-row {
+      display: grid;
+      grid-template-columns: 3fr 6fr;
+      gap: 16px;
+      align-items: center;
+      padding: 18px 20px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .h-row:last-child { border-bottom: none; }
+
+    @media (max-width: 760px) {
+      .h-row { grid-template-columns: 1fr; }
+    }
+
+    .h-id { min-width: 0; }
+    .h-id strong { font-size: 1rem; font-weight: 700; }
+    .h-id span {
       display: block;
-      font-size: 0.82rem;
       font-family: var(--font-mono);
+      font-size: 0.82rem;
       color: var(--text-muted);
       font-weight: 400;
-      margin-top: 6px;
+      margin-top: 4px;
     }
+
+    .h-cmd {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      min-width: 0;
+      background: var(--canvas);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius);
+      padding: 8px 8px 8px 14px;
+    }
+
+    .h-cmd code {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      color: var(--text);
+      overflow-wrap: anywhere;
+      user-select: all;
+      min-width: 0;
+    }
+
+    .h-cmd .sig { color: var(--signal); user-select: none; }
+
+    .h-copy {
+      flex-shrink: 0;
+      background: var(--surface-elevated);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      color: var(--text-muted);
+      font-family: inherit;
+      font-size: 0.82rem;
+      font-weight: 600;
+      padding: 6px 14px;
+      min-height: 44px;
+      cursor: pointer;
+      transition: opacity 0.15s ease;
+    }
+
+    .h-copy:hover { color: var(--text); opacity: 0.9; }
 
     /* Footer (Untracked labels, zero middle-dot meta strings, Rule 10) */
     footer {
@@ -981,13 +1030,44 @@
     <div class="container">
       <div class="section-eyebrow">universal integration</div>
       <h2 class="section-title">Operational across all AI environments</h2>
+      <p class="section-desc">One command per environment. Install the plugin or inject the rule files — every assistant then follows The Floor automatically.</p>
 
-      <div class="harness-grid">
-        <div class="harness-item">Devin CLI / Desktop<span>.devin-plugin / SKILL.md</span></div>
-        <div class="harness-item">Cursor IDE<span>.cursor/rules / .cursorrules</span></div>
-        <div class="harness-item">Windsurf / Codeium<span>.windsurfrules / AGENTS.md</span></div>
-        <div class="harness-item">Claude Code<span>.claude-plugin / CLAUDE.md</span></div>
-        <div class="harness-item">GitHub Copilot<span>.github/copilot-instructions.md</span></div>
+      <div class="harness-ledger">
+        <div class="h-row">
+          <div class="h-id"><strong>Devin CLI / Desktop</strong><span>.devin-plugin/plugin.json — skills/craftspec</span></div>
+          <div class="h-cmd">
+            <code><span class="sig">$</span> devin plugins install makeskills/craftspec</code>
+            <button class="h-copy" type="button" onclick="copySnippet('devin plugins install makeskills/craftspec')">copy</button>
+          </div>
+        </div>
+        <div class="h-row">
+          <div class="h-id"><strong>Cursor IDE</strong><span>.cursor/rules/craftspec.mdc — .cursorrules</span></div>
+          <div class="h-cmd">
+            <code><span class="sig">$</span> npx @makeskills/craftspec init</code>
+            <button class="h-copy" type="button" onclick="copySnippet('npx @makeskills/craftspec init')">copy</button>
+          </div>
+        </div>
+        <div class="h-row">
+          <div class="h-id"><strong>Windsurf / Cascade</strong><span>.windsurfrules — AGENTS.md</span></div>
+          <div class="h-cmd">
+            <code><span class="sig">$</span> npx @makeskills/craftspec init</code>
+            <button class="h-copy" type="button" onclick="copySnippet('npx @makeskills/craftspec init')">copy</button>
+          </div>
+        </div>
+        <div class="h-row">
+          <div class="h-id"><strong>Claude Code</strong><span>.claude-plugin — CLAUDE.md — /craftspec</span></div>
+          <div class="h-cmd">
+            <code><span class="sig">$</span> npx @makeskills/craftspec init</code>
+            <button class="h-copy" type="button" onclick="copySnippet('npx @makeskills/craftspec init')">copy</button>
+          </div>
+        </div>
+        <div class="h-row">
+          <div class="h-id"><strong>GitHub Copilot</strong><span>.github/copilot-instructions.md</span></div>
+          <div class="h-cmd">
+            <code><span class="sig">$</span> npx @makeskills/craftspec init</code>
+            <button class="h-copy" type="button" onclick="copySnippet('npx @makeskills/craftspec init')">copy</button>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -1214,7 +1294,7 @@ Design and implement an agency-grade interface for "${q}" strictly adhering to C
     const io = new IntersectionObserver((entries) => {
       entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
     }, { threshold: 0.15 });
-    document.querySelectorAll('.section-eyebrow, .section-title, .section-desc, .controls-pane, .output-pane, .showcase-cell, .floor-pane, .harness-item')
+    document.querySelectorAll('.section-eyebrow, .section-title, .section-desc, .controls-pane, .output-pane, .showcase-cell, .floor-pane, .h-row')
       .forEach((el, i) => { el.classList.add('reveal'); el.style.transitionDelay = (i % 4) * 70 + 'ms'; io.observe(el); });
   </script>
 </body>
