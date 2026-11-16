@@ -1,6 +1,6 @@
 {
   "name": "@makeskills/craftspec",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "頂級 AI 設計需求架構師與規格最佳化引擎：以 Ask Once 精準提問、The Floor 硬性底線防禦、行動端防爆與風格抽卡盲盒，將模糊需求重構為極致專業、抗模板化的 AI 設計規格與提示詞。",
   "type": "module",
   "main": "bin/craftspec.mjs",
