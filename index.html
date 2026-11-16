@@ -368,32 +368,6 @@
       border-color: var(--signal);
     }
 
-    .archetype-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    .btn-archetype {
-      padding: 8px 14px;
-      background: var(--surface-elevated);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      color: var(--text-muted);
-      font-size: 0.82rem;
-      font-weight: 600;
-      min-height: 44px;
-      display: inline-flex;
-      align-items: center;
-      transition: transform 0.1s ease;
-    }
-
-    .btn-archetype.active {
-      background: var(--text);
-      color: var(--canvas);
-      border-color: var(--text);
-    }
-
     /* Live Surface Monitor */
     .surface-monitor {
       border: 1px solid var(--border);
@@ -827,21 +801,9 @@
             <input type="text" id="userInput" class="query-input" value="SaaS Telemetry and Security Console" placeholder="e.g. Minimalist Watch Store, Quiet Luxury Studio...">
           </div>
 
-          <div>
-            <div class="pane-label" style="margin-bottom:8px;">dealt archetype</div>
-            <div class="archetype-row" id="archetypeRow">
-              <button class="btn-archetype active" data-style="swiss" onclick="pickStyle('swiss')">swiss editorial</button>
-              <button class="btn-archetype" data-style="darkTech" onclick="pickStyle('darkTech')">tactical dark</button>
-              <button class="btn-archetype" data-style="luxury" onclick="pickStyle('luxury')">quiet luxury</button>
-              <button class="btn-archetype" data-style="brutalist" onclick="pickStyle('brutalist')">brutalist</button>
-              <button class="btn-archetype" data-style="cyber" onclick="pickStyle('cyber')">cyber blueprint</button>
-              <button class="btn-archetype" data-style="wabi" onclick="pickStyle('wabi')">wabi-sabi paper</button>
-            </div>
-          </div>
-
           <!-- Live Surface Preview -->
           <div class="surface-monitor" id="surfaceCard">
-            <div style="font-family:var(--font-mono); font-size:0.75rem; margin-bottom:8px;" id="monitorTag">archetype: swiss</div>
+            <div style="font-family:var(--font-mono); font-size:0.75rem; margin-bottom:8px;" id="monitorTag">inferred archetype: swiss editorial</div>
             <h3 class="monitor-heading" id="monitorTitle">Precision Telemetry Surface</h3>
             <p class="monitor-sub" id="monitorDesc">Rigorous asymmetric grid, zero purple gradients, 44px min touch anchors.</p>
             <button class="monitor-btn" id="monitorBtn">inspect tokens</button>
@@ -1135,12 +1097,14 @@
     let activeStyle = 'swiss';
     let activeHarness = 'devin';
 
-    function pickStyle(key) {
-      activeStyle = key;
-      document.querySelectorAll('.btn-archetype').forEach(b => {
-        b.classList.toggle('active', b.dataset.style === key);
-      });
-      renderWorkbench();
+    function inferStyle(q) {
+      const t = q.toLowerCase();
+      if (/暗黑|科技|工程|dark|telemetry|monitor|console|developer|security/.test(t)) return 'darkTech';
+      if (/奢華|精品|珠寶|高級|luxury|jewel|boutique|hotel/.test(t)) return 'luxury';
+      if (/日系|人文|簡樸|wabi|paper|zen|craft|handmade|pottery/.test(t)) return 'wabi';
+      if (/工業|製造|brutal|industrial|manufactur|factory|hardware/.test(t)) return 'brutalist';
+      if (/賽博|藍圖|cyber|blueprint|aerospace|quantum/.test(t)) return 'cyber';
+      return 'swiss';
     }
 
     function switchHarness(h) {
@@ -1153,15 +1117,16 @@
     }
 
     function renderWorkbench() {
-      const a = archetypes[activeStyle];
       const q = document.getElementById('userInput').value || 'Production System Interface';
+      activeStyle = inferStyle(q);
+      const a = archetypes[activeStyle];
 
       const monitor = document.getElementById('surfaceCard');
       monitor.style.backgroundColor = a.bg;
       monitor.style.color = a.text;
       monitor.style.borderColor = a.border;
 
-      document.getElementById('monitorTag').textContent = 'archetype: ' + a.name.toLowerCase();
+      document.getElementById('monitorTag').textContent = 'inferred archetype: ' + a.name.toLowerCase();
       document.getElementById('monitorTag').style.color = a.accent;
       document.getElementById('monitorTitle').textContent = q;
       document.getElementById('monitorDesc').textContent = a.desc;

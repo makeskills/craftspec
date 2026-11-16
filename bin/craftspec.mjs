@@ -93,6 +93,18 @@ const archetypes = {
     colors: { bg: '#F4EFEA', surface: '#FAF7F2', text: '#2C2A29', muted: '#7D7571', border: '#D6CCC2', accent: '#4A5568' },
     typography: 'Display: Shippori Mincho / Body: Noto Sans',
     vibe: '暖灰手作紙質感、沈穩排版、極致質樸克制'
+  },
+  brutalist: {
+    name: '工業機能藍圖 (Industrial Brutalist)',
+    colors: { bg: '#E5E5E5', surface: '#F0F0F0', text: '#0A0A0A', muted: '#525252', border: '#000000', accent: '#FF5500' },
+    typography: 'Display: Space Mono / Body: Chivo',
+    vibe: '嚴密格線外露、機械刻度感、高資訊密度、單色高對比'
+  },
+  cyber: {
+    name: '賽博幾何藍圖 (Cyber Blueprint)',
+    colors: { bg: '#080E18', surface: '#0C1626', text: '#E2E8F0', muted: '#94A3B8', border: '#1E293B', accent: '#06B6D4' },
+    typography: 'Display: Chakra Petch / Body: Fira Code',
+    vibe: '深藍夜色底、青色訊號、幾何節點拓撲、深科技氛圍'
   }
 };
 
@@ -105,6 +117,10 @@ if (inputQuery.includes('暗黑') || inputQuery.includes('黑') || inputQuery.in
   style = archetypes.luxury;
 } else if (inputQuery.includes('日系') || inputQuery.includes('人文') || inputQuery.includes('書') || inputQuery.includes('簡樸')) {
   style = archetypes.wabiSabi;
+} else if (inputQuery.includes('工業') || inputQuery.includes('製造') || inputQuery.includes('brutal') || inputQuery.toLowerCase().includes('industrial')) {
+  style = archetypes.brutalist;
+} else if (inputQuery.includes('賽博') || inputQuery.includes('藍圖') || inputQuery.toLowerCase().includes('cyber') || inputQuery.toLowerCase().includes('blueprint')) {
+  style = archetypes.cyber;
 }
 
 console.log('\n\x1b[1m\x1b[36m================================================================');
