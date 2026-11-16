@@ -1,7 +1,7 @@
 # CraftSpec
 
 > **A top-tier AI design-requirement architect and spec optimizer**  
-> Say goodbye to generic "AI slop" templates. Through the four-dimension "Ask Once" interview, hard-floor defenses (The Floor), mobile safeguards, and a style-shuffle blind box, CraftSpec rebuilds vague design requests into precise, anti-template, directly executable AI design specs and prompts.
+> Say goodbye to generic "AI slop" templates. Through the four-dimension "Ask Once" interview, hard-floor defenses (The Floor), and mobile safeguards, CraftSpec rebuilds vague design requests into precise, anti-template, directly executable AI design specs and prompts.
 
 ---
 
@@ -10,7 +10,7 @@
 - 🛡️ **Hard Invariants (The Floor)**: No meaningless purple gradients, no cards inside cards, no animation abuse (only `transform` and `opacity` allowed), and no invented metrics or fake testimonials.
 - 🎯 **Ask Once**: No endless follow-up questions. A single round covering four key dimensions: **Material**, **Audience**, **Use**, and **Tone**.
 - 📱 **Mobile Defense**: Enforced 44×44px minimum touch targets, `clamp()` responsive type scales that prevent mobile headline blowups, and tables that automatically degrade into cards — zero horizontal overflow.
-- 🎲 **Style Shuffle**: Six finely tuned, niche high-end aesthetic kits built in (Swiss Editorial, Tactical Dark, Quiet Luxury, Wabi-Sabi Paper, Industrial Brutalist, Cyber Blueprint).
+- 🎨 **Style Library**: Six finely tuned, niche high-end aesthetic kits built in (Swiss Editorial, Tactical Dark, Quiet Luxury, Wabi-Sabi Paper, Industrial Brutalist, Cyber Blueprint).
 - 🔄 **Redesign / Unslop**: Paste legacy code or a screenshot and get an automatic Floor-violation diagnosis plus a painless migration brief that preserves business logic while cleaning up the visuals.
 - 🔌 **Target Model Adaptor**: Produces prompts tailored for **v0 / Bolt**, **Cursor / Devin / Windsurf**, or **Claude Artifacts**.
 
@@ -65,9 +65,6 @@ npx @makeskills/craftspec init
 
 # 2. Optimize a design brief directly in the terminal
 npx @makeskills/craftspec "a dark, minimalist watch e-commerce site"
-
-# 3. Random style blind-box draw
-npx @makeskills/craftspec shuffle
 ```
 
 ---
@@ -100,13 +97,7 @@ After installing, type `/` in the chat input and the `/craftspec` command appear
 ```
 The AI first shows the "Ask Once" four-dimension cards for you to pick from, then outputs a spec containing a Signature moment, design tokens, and a ready-to-use AI prompt.
 
-#### 2. Inspiration blind-box draw
-```text
-/craftspec random draw
-```
-The AI pulls a unique scheme from the six built-in high-end aesthetic kits to break aesthetic fatigue.
-
-#### 3. Redesign an existing page
+#### 2. Redesign an existing page
 ```text
 /craftspec redesign the current homepage and remove the AI template feel [attach code or a description]
 ```

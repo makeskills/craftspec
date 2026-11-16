@@ -18,7 +18,6 @@ if (!command || command === '--help' || command === '-h') {
 \x1b[1m使用方式:\x1b[0m
   npx craftspec init                 在當前專案中一鍵注入 CraftSpec 設計規範（支援 Cursor, Windsurf, Claude, Copilot）
   npx craftspec "<設計需求描述>"      直接在命令列中將粗略需求優化為結構化 AI 設計規格與 Prompt
-  npx craftspec shuffle              隨機抽取一套小眾頂級美學設計套件（風格盲盒）
   npx craftspec --help               顯示本說明資訊
   npx craftspec --version            顯示版本號
 
@@ -69,7 +68,7 @@ if (command === 'init') {
   process.exit(0);
 }
 
-// 抽卡或一般需求優化
+// 一般需求優化
 const archetypes = {
   swiss: {
     name: '瑞士極簡刊物 (Swiss Editorial)',
@@ -97,15 +96,10 @@ const archetypes = {
   }
 };
 
-const inputQuery = (command === 'shuffle' || command === 'random')
-  ? '隨機美學探索'
-  : args.join(' ');
+const inputQuery = args.join(' ');
 
 let style = archetypes.swiss;
-if (command === 'shuffle' || command === 'random') {
-  const keys = Object.keys(archetypes);
-  style = archetypes[keys[Math.floor(Math.random() * keys.length)]];
-} else if (inputQuery.includes('暗黑') || inputQuery.includes('黑') || inputQuery.includes('科技') || inputQuery.includes('工程')) {
+if (inputQuery.includes('暗黑') || inputQuery.includes('黑') || inputQuery.includes('科技') || inputQuery.includes('工程')) {
   style = archetypes.darkTech;
 } else if (inputQuery.includes('奢華') || inputQuery.includes('精品') || inputQuery.includes('珠寶') || inputQuery.includes('高級')) {
   style = archetypes.luxury;
@@ -114,7 +108,7 @@ if (command === 'shuffle' || command === 'random') {
 }
 
 console.log('\n\x1b[1m\x1b[36m================================================================');
-console.log('       CraftSpec · AI 設計規格書與 Prompt 最佳化引擎            ');
+console.log('       CraftSpec — AI 設計規格書與 Prompt 最佳化引擎            ');
 console.log('================================================================\x1b[0m\n');
 
 console.log(`\x1b[1m[用戶原始需求]:\x1b[0m "${inputQuery}"\n`);

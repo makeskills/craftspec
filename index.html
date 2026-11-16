@@ -394,26 +394,6 @@
       border-color: var(--text);
     }
 
-    .btn-shuffle {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      padding: 10px 16px;
-      background: var(--surface-elevated);
-      color: var(--signal);
-      border: 1px solid var(--signal-border);
-      border-radius: var(--radius);
-      font-size: 0.82rem;
-      font-weight: 700;
-      min-height: 44px;
-      transition: transform 0.1s ease;
-    }
-
-    .btn-shuffle:hover {
-      transform: translateY(-1px);
-    }
-
     /* Live Surface Monitor */
     .surface-monitor {
       border: 1px solid var(--border);
@@ -859,17 +839,6 @@
             </div>
           </div>
 
-          <button class="btn-shuffle" onclick="shuffleStyle()">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <polyline points="16 3 21 3 21 8"></polyline>
-              <line x1="4" y1="20" x2="21" y2="3"></line>
-              <polyline points="21 16 21 21 16 21"></polyline>
-              <line x1="15" y1="15" x2="21" y2="21"></line>
-              <line x1="4" y1="4" x2="9" y2="9"></line>
-            </svg>
-            shuffle dealt direction
-          </button>
-
           <!-- Live Surface Preview -->
           <div class="surface-monitor" id="surfaceCard">
             <div style="font-family:var(--font-mono); font-size:0.75rem; margin-bottom:8px;" id="monitorTag">archetype: swiss</div>
@@ -1172,14 +1141,6 @@
         b.classList.toggle('active', b.dataset.style === key);
       });
       renderWorkbench();
-    }
-
-    function shuffleStyle() {
-      const keys = Object.keys(archetypes);
-      const filtered = keys.filter(k => k !== activeStyle);
-      const random = filtered[Math.floor(Math.random() * filtered.length)];
-      pickStyle(random);
-      showToast('archetype shuffled');
     }
 
     function switchHarness(h) {
